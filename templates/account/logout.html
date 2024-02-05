@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block headtitle %} | Sign Out{% endblock headtitle %}
 
@@ -6,17 +7,17 @@
 <div class="user-action-form-wrap">
     <div class="user-action-form-inner">
 
-	<h1>Sign Out</h1>
+	<h1>{% trans "Sign Out" %}</h1>
 
-		<p>Are you sure you want to sign out?</p>
+		<p>{% trans "Are you sure you want to sign out?" %}</p>
 
 		<form method="post" class="logout" action="{% url 'account_logout' %}">
 		  {% csrf_token %}
 		  {% if redirect_field_value %}
 		  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
 		  {% endif %}
-		  <button type="submit">Sign Out</button>
-		  <a class="button secondaryAction" href="/">Cancel</a>
+		  <button type="submit">{% trans "Sign Out" %}</button>
+		  <a class="button secondaryAction" href="/">{% trans "Cancel" %}</a>
 		</form>
 
     </div>

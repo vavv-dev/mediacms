@@ -1,14 +1,15 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block headtitle %} | Sign Up{% endblock headtitle %}
+{% block headtitle %} | {% trans "Sign Up" %}{% endblock headtitle %}
 
 {% block innercontent %}
 <div class="user-action-form-wrap">
     <div class="user-action-form-inner">
 
-		<h1>Sign Up</h1>
+		<h1>{% trans "Sign Up" %}</h1>
 
-		<p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
+    {% blocktrans %}<p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>{% endblocktrans %}
 
 		<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
 			{% csrf_token %}
@@ -16,7 +17,7 @@
 			{% if redirect_field_value %}
 				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 			  {% endif %}
-			  <button type="submit">Sign Up &raquo;</button>
+			  <button type="submit">{% trans "Sign Up &raquo;" %}</button>
 		</form>
 
     </div>

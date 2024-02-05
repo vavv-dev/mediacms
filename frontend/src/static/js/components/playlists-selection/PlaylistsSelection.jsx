@@ -6,6 +6,7 @@ import { CircleIconButton, MaterialIcon } from '../_shared';
 import { PlaylistCreationForm } from '../playlist-form/PlaylistCreationForm';
 
 import './PlaylistsSelection.scss';
+import i18next from 'i18next';
 
 function PlaylistsSingleSelection(props) {
   function onChange(ev) {
@@ -156,7 +157,7 @@ export function PlaylistsSelection(props) {
   return (
     <div ref={containerRef} className="saveto-popup">
       <div className="saveto-title">
-        Save to...
+        {i18next.t("Save to...")}
         <CircleIconButton type="button" onClick={onClickExit}>
           <MaterialIcon type="close" />
         </CircleIconButton>
@@ -173,7 +174,7 @@ export function PlaylistsSelection(props) {
       ) : (
         <CircleIconButton className="saveto-create" type="button" onClick={togglePlaylistCreationForm}>
           <MaterialIcon type="add" />
-          Create a new playlist
+          {i18next.t("Create a new playlist")}
         </CircleIconButton>
       )}
     </div>

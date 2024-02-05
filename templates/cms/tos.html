@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block headtitle %}Terms - {{PORTAL_NAME}}{% endblock headtitle %}
+{% block headtitle %}{% trans "Terms" %} - {{PORTAL_NAME}}{% endblock headtitle %}
 
 {% block headermeta %}
 
@@ -39,8 +40,8 @@
 
 {% block innercontent %}
 <div class="custom-page-wrapper">
-	<h2>Terms</h2>
+	<h2>{% trans "Terms" %}</h2>
 	<hr/>
-	<p>Terms of service</p>
+	<p>{% trans "Terms of service" %}</p>
 </div>
 {% endblock %}

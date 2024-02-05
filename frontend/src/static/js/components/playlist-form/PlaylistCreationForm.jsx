@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { PageActions, MediaPageActions, PlaylistPageActions } from '../../utils/actions/';
 import { MediaPageStore, PlaylistPageStore } from '../../utils/stores/';
@@ -129,11 +130,11 @@ export function PlaylistCreationForm(props) {
   return (
     <div className="playlist-form-wrap">
       <div className="playlist-form-field playlist-title" ref={nameRef}>
-        <span className="playlist-form-label">Title</span>
+        <span className="playlist-form-label">{i18next.t('Title')}</span>
         <input
           ref={nameInputRef}
           type="text"
-          placeholder="Enter playlist title..."
+          placeholder={i18next.t("Enter playlist title...")}
           value={title}
           onChange={onChangeTitle}
           onFocus={onFocusPlaylistNameInput}
@@ -143,11 +144,11 @@ export function PlaylistCreationForm(props) {
       </div>
 
       <div className="playlist-form-field playlist-description" ref={descriptionRef}>
-        <span className="playlist-form-label">Description</span>
+        <span className="playlist-form-label">{i18next.t('Description')}</span>
         <textarea
           ref={descriptionInputRef}
           rows="1"
-          placeholder="Enter playlist description..."
+          placeholder={i18next.t("Enter playlist description...")}
           value={description}
           onChange={onChangeDescription}
           onFocus={onFocusDescription}
@@ -164,10 +165,10 @@ export function PlaylistCreationForm(props) {
 
       <div className="playlist-form-actions">
         <button className="cancel-btn" onClick={onCancelPlaylistCreation}>
-          CANCEL
+          {i18next.t('CANCEL')}
         </button>
         <button className="create-btn" onClick={onClickPlaylistCreate}>
-          {id ? 'UPDATE' : 'CREATE'}
+          {i18next.t(id ? 'UPDATE' : 'CREATE')}
         </button>
       </div>
     </div>

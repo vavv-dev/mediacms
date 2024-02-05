@@ -6,6 +6,7 @@ import { PageStore, ProfilePageStore } from '../../utils/stores/';
 import { PageActions, ProfilePageActions } from '../../utils/actions/';
 import { CircleIconButton, PopupMain } from '../_shared';
 import ItemsInlineSlider from '../item-list/includes/itemLists/ItemsInlineSlider';
+import i18next from 'i18next';
 
 class ProfileSearchBar extends React.PureComponent {
   constructor(props) {
@@ -161,7 +162,7 @@ class ProfileSearchBar extends React.PureComponent {
             ref="SearchInput"
             type="text"
             name="aq"
-            placeholder="Search"
+            placeholder={i18next.t("Search")}
             aria-label="Search"
             value={this.state.queryVal}
             onChange={this.onChange}
@@ -315,13 +316,13 @@ class NavMenuInlineTabs extends React.PureComponent {
             <InlineTab
               id="about"
               isActive={'about' === this.props.type}
-              label={'About' + (this.userIsAuthor ? ' Me' : '')}
+              label={i18next.t('About' + (this.userIsAuthor ? ' Me' : ''))}
               link={LinksContext._currentValue.profile.about}
             />
             <InlineTab
               id="media"
               isActive={'media' === this.props.type}
-              label={(this.userIsAuthor ? 'My ' : '') + 'Media'}
+              label={i18next.t((this.userIsAuthor ? 'My ' : '') + 'Media')}
               link={LinksContext._currentValue.profile.media}
             />
 
@@ -329,7 +330,7 @@ class NavMenuInlineTabs extends React.PureComponent {
               <InlineTab
                 id="playlists"
                 isActive={'playlists' === this.props.type}
-                label={(this.userIsAuthor ? 'My ' : '') + 'Playlists'}
+                label={i18next.t((this.userIsAuthor ? 'My ' : '') + 'Playlists')}
                 link={LinksContext._currentValue.profile.playlists}
               />
             ) : null}
@@ -388,7 +389,7 @@ function EditBannerButton(props) {
   }
   return (
     <a href={link} className="edit-channel" title="Edit banner">
-      EDIT BANNER
+      {i18next.t("EDIT BANNER")}
     </a>
   );
 }
@@ -402,7 +403,7 @@ function EditProfileButton(props) {
 
   return (
     <a href={link} className="edit-profile" title="Edit profile">
-      EDIT PROFILE
+      {i18next.t("EDIT PROFILE")}
     </a>
   );
 }
@@ -531,23 +532,23 @@ export default function ProfilePagesHeader(props) {
           <span className="delete-profile-wrap">
             <PopupTrigger contentRef={popupContentRef}>
               <button className="delete-profile" title="">
-                REMOVE PROFILE
+                {i18next.t("REMOVE PROFILE")}
               </button>
             </PopupTrigger>
 
             <PopupContent contentRef={popupContentRef}>
               <PopupMain>
                 <div className="popup-message">
-                  <span className="popup-message-title">Profile removal</span>
-                  <span className="popup-message-main">You're willing to remove profile permanently?</span>
+                  <span className="popup-message-title">{i18next.t("Profile removal")}</span>
+                  <span className="popup-message-main">{i18next.t("You're willing to remove profile permanently?")}</span>
                 </div>
                 <hr />
                 <span className="popup-message-bottom">
                   <button className="button-link cancel-profile-removal" onClick={cancelProfileRemoval}>
-                    CANCEL
+                    {i18next.t("CANCEL")}
                   </button>
                   <button className="button-link proceed-profile-removal" onClick={proceedMediaRemoval}>
-                    PROCEED
+                    {i18next.t("PROCEED")}
                   </button>
                 </span>
               </PopupMain>

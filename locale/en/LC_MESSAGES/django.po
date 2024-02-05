@@ -1,0 +1,711 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-28 18:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms/settings.py:462
+msgid "English"
+msgstr ""
+
+#: cms/settings.py:463
+msgid "Korean"
+msgstr ""
+
+#: files/forms.py:17 files/models.py:245 templates/cms/tags.html:4
+msgid "Tags"
+msgstr ""
+
+#: files/forms.py:17
+msgid "a comma separated list of new tags."
+msgstr ""
+
+#: files/forms.py:127
+msgid "Your name:"
+msgstr ""
+
+#: files/forms.py:128
+msgid "Your email:"
+msgstr ""
+
+#: files/forms.py:129
+msgid "Please add your message here and submit:"
+msgstr ""
+
+#: files/models.py:122
+msgid "Date produced"
+msgstr ""
+
+#: files/models.py:124
+msgid "Allow download"
+msgstr ""
+
+#: files/models.py:124
+msgid "Whether option to download media is shown"
+msgstr ""
+
+#: files/models.py:126
+msgid "Media can be part of one or more categories"
+msgstr ""
+
+#: files/models.py:126
+msgid "Category"
+msgstr ""
+
+#: files/models.py:136
+msgid "Description"
+msgstr ""
+
+#: files/models.py:144
+msgid "Enable comments"
+msgstr ""
+
+#: files/models.py:144
+msgid "Whether comments will be allowed for this media"
+msgstr ""
+
+#: files/models.py:149 templates/cms/featured-media.html:4
+msgid "Featured"
+msgstr ""
+
+#: files/models.py:152
+msgid "Whether media is globally featured by a MediaCMS editor"
+msgstr ""
+
+#: files/models.py:160
+msgid "Is reviewed"
+msgstr ""
+
+#: files/models.py:163
+msgid "Whether media is reviewed, so it can appear on public listings"
+msgstr ""
+
+#: files/models.py:215
+msgid "Reported times"
+msgstr ""
+
+#: files/models.py:215
+msgid "how many time a media is reported"
+msgstr ""
+
+#: files/models.py:237
+msgid "State"
+msgstr ""
+
+#: files/models.py:242
+msgid "state of Media"
+msgstr ""
+
+#: files/models.py:245
+msgid "select one or more out of the existing tags"
+msgstr ""
+
+#: files/models.py:247 users/models.py:33
+msgid "Title"
+msgstr ""
+
+#: files/models.py:247
+msgid "media title"
+msgstr ""
+
+#: files/models.py:259
+msgid "Thumbnail time"
+msgstr ""
+
+#: files/models.py:259
+msgid "Time on video that a thumbnail will be taken"
+msgstr ""
+
+#: files/models.py:274
+msgid "Upload image"
+msgstr ""
+
+#: files/models.py:275
+msgid "This image will characterize the media"
+msgstr ""
+
+#: files/models.py:1184
+msgid "Language"
+msgstr ""
+
+#: files/models.py:1189
+msgid "Subtitle/CC file"
+msgstr ""
+
+#: files/models.py:1190
+msgid "File has to be WebVTT format"
+msgstr ""
+
+#: lms/models.py:14
+msgid "female"
+msgstr ""
+
+#: lms/models.py:15
+msgid "male"
+msgstr ""
+
+#: lms/models.py:16
+msgid "other"
+msgstr ""
+
+#: templates/account/account_inactive.html:7
+#: templates/account/account_inactive.html:13
+msgid "Account Inactive"
+msgstr ""
+
+#: templates/account/account_inactive.html:15
+msgid "This account is inactive."
+msgstr ""
+
+#: templates/account/email.html:7
+msgid "Account"
+msgstr ""
+
+#: templates/account/email.html:13
+msgid "E-mail Addresses"
+msgstr ""
+
+#: templates/account/email.html:16
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: templates/account/email.html:30
+msgid "Verified"
+msgstr ""
+
+#: templates/account/email.html:32
+msgid "Unverified"
+msgstr ""
+
+#: templates/account/email.html:35
+msgid "Primary"
+msgstr ""
+
+#: templates/account/email.html:41
+msgid "Make Primary"
+msgstr ""
+
+#: templates/account/email.html:42
+msgid "Re-send Verification"
+msgstr ""
+
+#: templates/account/email.html:43
+msgid "Remove"
+msgstr ""
+
+#: templates/account/email.html:50
+msgid "Warning:"
+msgstr ""
+
+#: templates/account/email.html:50
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: templates/account/email.html:53
+msgid "Add E-mail Address"
+msgstr ""
+
+#: templates/account/email.html:58
+msgid "Add E-mail"
+msgstr ""
+
+#: templates/account/email.html:68
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: templates/account/email/email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because user %(user_display)s has given yours "
+"as an e-mail address to connect their account.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+
+#: templates/account/email/email_confirmation_message.txt:7
+#, python-format
+msgid ""
+"Thank you from %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:8
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr ""
+
+#: templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr ""
+
+#: templates/account/email_confirm.html:15
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: templates/account/email_confirm.html:19
+msgid "Confirm"
+msgstr ""
+
+#: templates/account/email_confirm.html:26
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: templates/account/login.html:4 templates/account/login.html:10
+#: templates/account/login.html:20 templates/cms/add-media.html:144
+msgid "Sign In"
+msgstr ""
+
+#: templates/account/login.html:12
+#, python-format
+msgid ""
+"<p>If you have not created an account yet, then please <a "
+"href=\"%(signup_url)s\">sign up</a> first.</p>"
+msgstr ""
+
+#: templates/account/login.html:21 templates/cms/add-media.html:143
+msgid "Forgot Password?"
+msgstr ""
+
+#: templates/account/logout.html:10 templates/account/logout.html:19
+msgid "Sign Out"
+msgstr ""
+
+#: templates/account/logout.html:12
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: templates/account/logout.html:20
+msgid "Cancel"
+msgstr ""
+
+#: templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr ""
+
+#: templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr ""
+
+#: templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr ""
+
+#: templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr ""
+
+#: templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr ""
+
+#: templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr ""
+
+#: templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr ""
+
+#: templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr ""
+
+#: templates/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr ""
+
+#: templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr ""
+
+#: templates/account/password_change.html:8
+#: templates/account/password_change.html:14
+#: templates/account/password_change.html:19
+#: templates/account/password_reset_from_key.html:7
+#: templates/account/password_reset_from_key.html:13
+#: templates/account/password_reset_from_key_done.html:7
+#: templates/account/password_reset_from_key_done.html:13
+msgid "Change Password"
+msgstr ""
+
+#: templates/account/password_reset.html:11
+#: templates/account/password_reset_done.html:8
+#: templates/account/password_reset_done.html:15
+msgid "Password Reset"
+msgstr ""
+
+#: templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: templates/account/password_reset.html:21
+msgid "Reset My Password"
+msgstr ""
+
+#: templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: templates/account/password_reset_done.html:21
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:13
+msgid "Bad Token"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:17
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:23
+msgid "change password"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:26
+#: templates/account/password_reset_from_key_done.html:14
+msgid "Your password is now changed."
+msgstr ""
+
+#: templates/account/password_set.html:7 templates/account/password_set.html:13
+#: templates/account/password_set.html:18
+msgid "Set Password"
+msgstr ""
+
+#: templates/account/signup.html:4 templates/account/signup.html:10
+msgid "Sign Up"
+msgstr ""
+
+#: templates/account/signup.html:12
+#, python-format
+msgid ""
+"<p>Already have an account? Then please <a href=\"%(login_url)s\">sign in</"
+"a>.</p>"
+msgstr ""
+
+#: templates/account/signup.html:20
+msgid "Sign Up &raquo;"
+msgstr ""
+
+#: templates/account/signup_closed.html:7
+#: templates/account/signup_closed.html:13
+msgid "Sign Up Closed"
+msgstr ""
+
+#: templates/account/signup_closed.html:15
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr ""
+
+#: templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr ""
+
+#: templates/account/verification_sent.html:10
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: templates/account/verification_sent.html:12
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"\t\tyou are who you claim to be. For this purpose, we require that you\n"
+"\t\tverify ownership of your e-mail address. "
+msgstr ""
+
+#: templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"\t\tverification. Please click on the link inside this e-mail. Please\n"
+"\t\tcontact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: templates/cms/about.html:4 templates/cms/about.html:43
+msgid "About"
+msgstr ""
+
+#: templates/cms/about.html:46
+msgid ""
+"\n"
+"    <p><a href=\"https://mediacms.io\">MediaCMS</a> is a modern, fully "
+"featured open source video and media CMS. It is developed to meet the needs "
+"of modern web platforms for viewing and sharing media.</p>\n"
+"    "
+msgstr ""
+
+#: templates/cms/add-media.html:4
+msgid "Add new media"
+msgstr ""
+
+#: templates/cms/add-media.html:41
+msgid "Drag and drop files"
+msgstr ""
+
+#: templates/cms/add-media.html:42
+msgid "or"
+msgstr ""
+
+#: templates/cms/add-media.html:44
+msgid "Browse your files"
+msgstr ""
+
+#: templates/cms/add-media.html:61
+msgid "Retry"
+msgstr ""
+
+#: templates/cms/add-media.html:76
+msgid "Edit filename"
+msgstr ""
+
+#: templates/cms/add-media.html:77
+msgid "Delete"
+msgstr ""
+
+#: templates/cms/add-media.html:79
+msgid "View media"
+msgstr ""
+
+#: templates/cms/add-media.html:82
+msgid "SELECTION"
+msgstr ""
+
+#: templates/cms/add-media.html:83
+msgid "Pause"
+msgstr ""
+
+#: templates/cms/add-media.html:92
+msgid "CLOSE"
+msgstr ""
+
+#: templates/cms/add-media.html:98
+msgid "NO"
+msgstr ""
+
+#: templates/cms/add-media.html:99
+msgid "YES"
+msgstr ""
+
+#: templates/cms/add-media.html:106
+msgid "CANCEL"
+msgstr ""
+
+#: templates/cms/add-media.html:107
+msgid "OK"
+msgstr ""
+
+#: templates/cms/add-media.html:122
+msgid "<a href='/contact'>Contact</a> the admin owners for more information."
+msgstr ""
+
+#: templates/cms/add-media.html:133
+msgid "Please login or register before you upload a media!"
+msgstr ""
+
+#: templates/cms/add-media.html:137
+msgid "If you have not created an account yet, then please first"
+msgstr ""
+
+#: templates/cms/add-media.html:137
+msgid "sign up"
+msgstr ""
+
+#: templates/cms/add_subtitle.html:4 templates/cms/add_subtitle.html:9
+msgid "Add subtitle"
+msgstr ""
+
+#: templates/cms/add_subtitle.html:13
+msgid "Add"
+msgstr ""
+
+#: templates/cms/categories.html:4
+msgid "Categories"
+msgstr ""
+
+#: templates/cms/contact.html:4 templates/cms/contact.html:48
+msgid "Contact us"
+msgstr ""
+
+#: templates/cms/contact.html:52
+msgid "Submit"
+msgstr ""
+
+#: templates/cms/edit_media.html:5
+msgid "Edit media"
+msgstr ""
+
+#: templates/cms/edit_media.html:15
+msgid "Edit Media"
+msgstr ""
+
+#: templates/cms/edit_media.html:19
+msgid "Update Media"
+msgstr ""
+
+#: templates/cms/history.html:4
+msgid "History"
+msgstr ""
+
+#: templates/cms/latest-media.html:4
+msgid "Recent uploads"
+msgstr ""
+
+#: templates/cms/liked_media.html:4
+msgid "Liked media"
+msgstr ""
+
+#: templates/cms/manage_comments.html:4
+msgid "Manage comments"
+msgstr ""
+
+#: templates/cms/manage_media.html:4
+msgid "Manage media"
+msgstr ""
+
+#: templates/cms/manage_users.html:4
+msgid "Manage users"
+msgstr ""
+
+#: templates/cms/members.html:4
+msgid "Members"
+msgstr ""
+
+#: templates/cms/recommended-media.html:4
+msgid "Recommended"
+msgstr ""
+
+#: templates/cms/tos.html:4 templates/cms/tos.html:43
+msgid "Terms"
+msgstr ""
+
+#: templates/cms/tos.html:45
+msgid "Terms of service"
+msgstr ""
+
+#: templates/cms/user_edit.html:3
+msgid "Edit profile"
+msgstr ""
+
+#: templates/cms/user_edit.html:11
+msgid "Edit Profile"
+msgstr ""
+
+#: templates/cms/user_edit.html:15
+msgid "Update Profile"
+msgstr ""
+
+#: users/models.py:27
+msgid "About me"
+msgstr ""
+
+#: users/models.py:29
+msgid "full name"
+msgstr ""
+
+#: users/models.py:30
+msgid "date added"
+msgstr ""
+
+#: users/models.py:31
+msgid "Is featured"
+msgstr ""
+
+#: users/models.py:34
+msgid "advanced user"
+msgstr ""
+
+#: users/models.py:37
+msgid ""
+"Whether you will receive email notifications for comments added to your "
+"content"
+msgstr ""
+
+#: users/models.py:40
+msgid "Location"
+msgstr ""
+
+#: users/models.py:41
+msgid "MediaCMS Editor"
+msgstr ""
+
+#: users/models.py:42
+msgid "MediaCMS Manager"
+msgstr ""
+
+#: users/models.py:43
+msgid "Whether allow contact will be shown on profile page"
+msgstr ""
+
+#: users/validators.py:11
+msgid ""
+"Enter a valid username. This value may contain only English letters and "
+"numbers"
+msgstr ""

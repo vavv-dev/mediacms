@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block headtitle %}Add new media - {{PORTAL_NAME}}{% endblock headtitle %}
+{% block headtitle %}{% trans "Add new media" %} - {{PORTAL_NAME}}{% endblock headtitle %}
 
 {% block externallinks %}
 {% if LOAD_FROM_CDN %}
@@ -38,10 +38,10 @@
 								<div class="media-drag-drop-content">
 									<div class="media-drag-drop-content-inner">
 										<span><i class="material-icons">cloud_upload</i></span>
-										<span>Drag and drop files</span>
-										<span>or</span>
+										<span>{% trans "Drag and drop files" %}</span>
+										<span>{% trans "or" %}</span>
 										<span class="browse-files-btn-wrap">
-											<span class="qq-upload-button-selector">Browse your files</span>
+											<span class="qq-upload-button-selector">{% trans "Browse your files" %}</span>
 										</span>
 										<div class="qq-upload-drop-area-selector media-dropzone" qq-hide-dropzone>
 											<span class="qq-upload-drop-area-text-selector"></span>
@@ -58,7 +58,7 @@
 									<div class="media-upload-item-thumb">
 										<img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale alt="" />
 										<span class="media-upload-item-spinner qq-upload-spinner-selector"><i class="material-icons">autorenew</i></span>
-										<button type="button" class="qq-upload-retry-selector retry-media-upload-item" aria-label="Retry"><i class="material-icons">refresh</i> Retry</button>
+										<button type="button" class="qq-upload-retry-selector retry-media-upload-item" aria-label="Retry"><i class="material-icons">refresh</i> {% trans "Retry" %}</button>
 									</div>
 									<div class="media-upload-item-details">
 										<div class="media-upload-item-name">
@@ -73,14 +73,14 @@
 											<span role="status" class="media-upload-item-status-text qq-upload-status-text-selector"></span>
 										</div>
 										<div class="media-upload-item-top-actions">
-											<span class="filename-edit qq-edit-filename-icon-selector" aria-label="Edit filename">Edit filename <i class="material-icons">create</i></span>
-											<button type="button" class="delete-media-upload-item qq-upload-delete-selector" aria-label="Delete">Delete <i class="material-icons">delete</i></button>
+											<span class="filename-edit qq-edit-filename-icon-selector" aria-label="Edit filename">{% trans "Edit filename" %} <i class="material-icons">create</i></span>
+											<button type="button" class="delete-media-upload-item qq-upload-delete-selector" aria-label="Delete">{% trans "Delete" %} <i class="material-icons">delete</i></button>
 											<button type="button" class="cancel-media-upload-item qq-upload-cancel-selector" aria-label="Cancel">Cancel <i class="material-icons">cancel</i></button>
-											<a href="#" class="view-uploaded-media-link qq-hide" target="_blank">View media <i class="material-icons">open_in_new</i></a>
+											<a href="#" class="view-uploaded-media-link qq-hide" target="_blank">{% trans "View media" %} <i class="material-icons">open_in_new</i></a>
 										</div>
 										<div class="media-upload-item-bottom-actions">
-											<button type="button" class="continue-media-upload-item qq-upload-continue-selector" aria-label="Continue"><i class="material-icons">play_circle_outline</i> Continue</button>
-											<button type="button" class="pause-media-upload-item qq-upload-pause-selector" aria-label="Pause"><i class="material-icons">pause_circle_outline</i> Pause</button>
+											<button type="button" class="continue-media-upload-item qq-upload-continue-selector" aria-label="Continue"><i class="material-icons">play_circle_outline</i> {% trans "SELECTION" %}</button>
+											<button type="button" class="pause-media-upload-item qq-upload-pause-selector" aria-label="Pause"><i class="material-icons">pause_circle_outline</i> {% trans "Pause" %}</button>
 										</div>
 									</div>
 								</div>
@@ -89,22 +89,22 @@
 						<dialog class="qq-alert-dialog-selector">
 							<div class="qq-dialog-message-selector"></div>
 							<div class="qq-dialog-buttons">
-								<button type="button" class="qq-cancel-button-selector">CLOSE</button>
+								<button type="button" class="qq-cancel-button-selector">{% trans "CLOSE" %}</button>
 							</div>
 						</dialog>
 						<dialog class="qq-confirm-dialog-selector">
 							<div class="qq-dialog-message-selector"></div>
 							<div class="qq-dialog-buttons">
-								<button type="button" class="qq-cancel-button-selector">NO</button>
-								<button type="button" class="qq-ok-button-selector">YES</button>
+								<button type="button" class="qq-cancel-button-selector">{% trans "NO" %}</button>
+								<button type="button" class="qq-ok-button-selector">{% trans "YES" %}</button>
 							</div>
 						</dialog>
 						<dialog class="qq-prompt-dialog-selector">
 							<div class="qq-dialog-message-selector"></div>
 							<input type="text">
 							<div class="qq-dialog-buttons">
-								<button type="button" class="qq-cancel-button-selector">CANCEL</button>
-								<button type="button" class="qq-ok-button-selector">OK</button>
+								<button type="button" class="qq-cancel-button-selector">{% trans "CANCEL" %}</button>
+								<button type="button" class="qq-ok-button-selector">{% trans "OK" %}</button>
 							</div>
 						</dialog>
 					</div>
@@ -119,7 +119,7 @@
 
 		<br>
 
-		<a href='/contact'>Contact</a> the admin owners for more information.
+    {% blocktrans %}<a href='/contact'>Contact</a> the admin owners for more information.{% endblocktrans %}
 
 	{% endif %}
 
@@ -130,18 +130,18 @@
 
 			<h1>Sign In</h1>
 
-			Please login or register before you upload a media!
+			{% trans "Please login or register before you upload a media!" %}
 
 			{% url 'upload_media' as redirect_url %}
 
-			<p>If you have not created an account yet, then please <a href="{% url 'account_signup' %}?next={{ redirect_url }}">sign up</a> first.</p>
+      <p>{% trans "If you have not created an account yet, then please first" %} <a href="{% url 'account_signup' %}?next={{ redirect_url }}">{% trans "sign up" %}</a> </p>
 
 			<form class="login" method="POST" action="{% url 'account_login' %}">
 				{% csrf_token %}
 				{{ form.as_p }}
 				<input type="hidden" name="next" value="{{ redirect_url }}" />
-				<a class="button secondaryAction" href="{% url 'account_reset_password' %}">Forgot Password?</a>
-				<button class="primaryAction" type="submit">Sign In</button>
+				<a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+				<button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
 			</form>
 
 		</div>

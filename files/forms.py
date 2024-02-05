@@ -1,4 +1,9 @@
+import os
+import subprocess
+
 from django import forms
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.utils.translation import gettext_lazy as _
 
 from .methods import get_next_state, is_mediacms_editor
 from .models import Media, Subtitle
@@ -9,7 +14,7 @@ class MultipleSelect(forms.CheckboxSelectMultiple):
 
 
 class MediaForm(forms.ModelForm):
-    new_tags = forms.CharField(label="Tags", help_text="a comma separated list of new tags.", required=False)
+    new_tags = forms.CharField(label=_("Tags"), help_text=_("a comma separated list of new tags."), required=False)
 
     class Meta:
         model = Media
@@ -69,6 +74,43 @@ class SubtitleForm(forms.ModelForm):
         super(SubtitleForm, self).__init__(*args, **kwargs)
         self.instance.media = media_item
 
+    def clean_subtitle_file(self):
+        subtitle_file = self.cleaned_data.get("subtitle_file")
+
+        if not subtitle_file:
+            raise forms.ValidationError('No file was submitted.')
+
+        file_extension = os.path.splitext(subtitle_file.name)[1].lower()
+
+        if file_extension == '.vtt':
+            return subtitle_file
+        elif file_extension == '.srt':
+            # Convert SRT to VTT
+            return self.convert_srt_to_vtt(subtitle_file)
+
+        else:
+            raise forms.ValidationError('Invalid file format. Only SRT or VTT files are allowed.')
+
+    def convert_srt_to_vtt(self, srt_file):
+        base_filename, _ = os.path.splitext(srt_file.name)
+        vtt_filename = f"{base_filename}.vtt"
+
+        with srt_file.open('rb') as srt_content:
+            # Run ffmpeg command to convert SRT to VTT
+            try:
+                process = subprocess.run(
+                    ["ffmpeg", "-i", "pipe:0", "-c:s", "webvtt", "-f", "webvtt", "pipe:1"],
+                    input=srt_content.read(),
+                    capture_output=True,
+                    check=True,
+                )
+                vtt_content = process.stdout.decode('utf-8')
+            except subprocess.CalledProcessError as e:
+                raise forms.ValidationError(f'Error converting SRT to VTT: {e}')
+
+        # Create a temporary VTT file
+        return SimpleUploadedFile(vtt_filename, vtt_content.encode('utf-8'))
+
     def save(self, *args, **kwargs):
         self.instance.user = self.instance.media.user
         media = super(SubtitleForm, self).save(*args, **kwargs)
@@ -82,9 +124,9 @@ class ContactForm(forms.Form):
 
     def __init__(self, user, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields["name"].label = "Your name:"
-        self.fields["from_email"].label = "Your email:"
-        self.fields["message"].label = "Please add your message here and submit:"
+        self.fields["name"].label = _("Your name:")
+        self.fields["from_email"].label = _("Your email:")
+        self.fields["message"].label = _("Please add your message here and submit:")
         self.user = user
         if user.is_authenticated:
             self.fields.pop("name")

@@ -4,6 +4,7 @@ import { SiteContext } from '../../utils/contexts/';
 import { MediaPageStore } from '../../utils/stores/';
 import { formatInnerLink } from '../../utils/helpers/';
 import { CircleIconButton, MaterialIcon, NavigationContentApp, NavigationMenuList, PopupMain } from '../_shared/';
+import i18next from 'i18next';
 
 function downloadOptionsList() {
   const media_data = MediaPageStore.get('media-data');
@@ -36,7 +37,7 @@ function downloadOptionsList() {
   }
 
   optionsList.original_media_url = {
-    text: 'Original file (' + media_data.size + ')',
+    text: i18next.t('Original file', {size: media_data.size }),
     link: formatInnerLink(media_data.original_media_url, SiteContext._currentValue.url),
     linkAttr: {
       target: '_blank',
@@ -71,7 +72,7 @@ export function VideoMediaDownloadLink(props) {
           <CircleIconButton type="span">
             <MaterialIcon type="arrow_downward" />
           </CircleIconButton>
-          <span>DOWNLOAD</span>
+          <span>{i18next.t('DOWNLOAD')}</span>
         </button>
       </PopupTrigger>
 

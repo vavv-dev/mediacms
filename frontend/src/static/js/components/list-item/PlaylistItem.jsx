@@ -1,9 +1,11 @@
 import React from 'react';
+import i18next from 'i18next';
 import { format } from 'timeago.js';
 import { useItem } from '../../utils/hooks/';
 import { PositiveIntegerOrZero } from '../../utils/helpers/';
 import { PlaylistItemMetaDate } from './includes/items/';
 import { Item } from './Item';
+import { selected as langSelected } from '../../utils/languages';
 
 export function PlaylistItem(props) {
   const type = 'playlist';
@@ -11,13 +13,13 @@ export function PlaylistItem(props) {
   const { titleComponent, thumbnailUrl, UnderThumbWrapper } = useItem({ ...props, type });
 
   function metaComponents() {
-    const publishDate = format(new Date(props.publish_date));
+    const publishDate = format(new Date(props.publish_date), langSelected);
     const publishDateTime =
       'string' === typeof props.publish_date
         ? Date.parse(props.publish_date)
         : Date.parse(new Date(props.publish_date));
 
-    return <PlaylistItemMetaDate dateTime={publishDateTime} text={'Created ' + publishDate} />;
+    return <PlaylistItemMetaDate dateTime={publishDateTime} text={i18next.t('Created',  {date: publishDate})} />;
   }
 
   return (
@@ -54,7 +56,7 @@ export function PlaylistItem(props) {
           {titleComponent()}
           {metaComponents()}
           <a href={props.link} title="" className="view-full-playlist">
-            VIEW FULL PLAYLIST
+            {i18next.t("VIEW FULL PLAYLIST")}
           </a>
         </UnderThumbWrapper>
       </div>

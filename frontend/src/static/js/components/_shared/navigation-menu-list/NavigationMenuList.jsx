@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MaterialIcon } from '../material-icon/MaterialIcon.jsx';
 import './NavigationMenuList.scss';
+import i18next from 'i18next';
 
 // TODO: Improve components.
 
@@ -20,7 +21,7 @@ function NavigationMenuListItem(props) {
   let iconPosIndex = props.icon ? (props.text && 'right' === props.iconPos ? 1 : 0) : -1;
 
   if (-1 < textPosIndex) {
-    children[textPosIndex] = <span key="Text">{props.text}</span>;
+    children[textPosIndex] = <span key="Text">{i18next.t(props.text)}</span>;
   }
 
   if (-1 < iconPosIndex) {
@@ -51,7 +52,7 @@ function NavigationMenuListItem(props) {
     case 'label':
       children = (
         <button {...(props.buttonAttr || {})} key="button">
-          <span>{props.text || null}</span>
+          <span>{i18next.t(props.text) || null}</span>
         </button>
       );
       attr.className = 'label-item';
@@ -59,7 +60,7 @@ function NavigationMenuListItem(props) {
     case 'div':
       children = (
         <div {...(props.divAttr || {})} key="div">
-          {props.text || null}
+          {i18next.t(props.text) || null}
         </div>
       );
       break;

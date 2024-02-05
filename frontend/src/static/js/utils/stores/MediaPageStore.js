@@ -292,6 +292,39 @@ class MediaPageStore extends EventEmitter {
     }
   }
 
+  requestMediaWatch() {
+    if (!MediaPageStoreData[this.id].mediaId) {
+      console.warn('Invalid media id:', MediaPageStoreData[this.id].mediaId);
+      return false;
+    }
+
+    const url = this.mediacms_config.api.media + '/' + MediaPageStoreData[this.id].mediaId + '/actions';
+    const watch = MediaPageStoreData[this.id].data.watch;
+    const watched = watch.watched;
+
+    // clean
+    for (let i = 0; i < watched.length; i++) {
+      watched[i] = watched[i] ? 1 : 0;
+    }
+
+    // not axios but native fetch with keepalive
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken(),
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        type: 'watch',
+        extra_info: watch,
+      }),
+      keepalive: true,
+    })
+      .then((res) => res.json())
+      .catch((e) => this.emit('watched_media_failed_request'));
+  }
+
   requestMediaLike() {
     if (!MediaPageStoreData[this.id].mediaId) {
       console.warn('Invalid media id:', MediaPageStoreData[this.id].mediaId);
@@ -507,6 +540,12 @@ class MediaPageStore extends EventEmitter {
             ? MediaPageStoreData[this.id].data.media_type
             : null;
         break;
+      case 'media-watch':
+        r =
+          void 0 !== MediaPageStoreData[this.id].data && void 0 !== MediaPageStoreData[this.id].data.watch
+            ? MediaPageStoreData[this.id].data.watch
+            : null;
+        break;
       case 'media-original-url':
         r =
           void 0 !== MediaPageStoreData[this.id].data && void 0 !== MediaPageStoreData[this.id].data.original_media_url
@@ -681,6 +720,9 @@ class MediaPageStore extends EventEmitter {
           this.loadData();
         }
 
+        break;
+      case 'WATCH_MEDIA':
+        this.requestMediaWatch();
         break;
       case 'LIKE_MEDIA':
         if (!MediaPageStoreData[this.id].likedMedia && !MediaPageStoreData[this.id].dislikedMedia) {

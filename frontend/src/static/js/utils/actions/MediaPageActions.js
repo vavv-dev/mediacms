@@ -6,6 +6,12 @@ export function loadMediaData() {
   });
 }
 
+export function watchMedia() {
+  Dispatcher.dispatch({
+    type: 'WATCH_MEDIA',
+  });
+}
+
 export function likeMedia() {
   Dispatcher.dispatch({
     type: 'LIKE_MEDIA',

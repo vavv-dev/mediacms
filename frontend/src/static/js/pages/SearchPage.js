@@ -1,4 +1,5 @@
 import React from 'react';
+import i18next from 'i18next';
 import { ApiUrlContext } from '../utils/contexts/';
 import { PageStore, SearchFieldStore } from '../utils/stores/';
 import { FiltersToggleButton } from '../components/_shared/';
@@ -110,23 +111,23 @@ export class SearchPage extends Page {
 
     if (null !== this.state.resultsCount) {
       if (!validQuery) {
-        title = 'No results for "' + this.state.searchQuery + '"';
+        title = i18next.t('No results for') + ' "' + this.state.searchQuery + '"';
       } else {
         if (this.state.searchCategories) {
-          title = null === this.state.resultsCount || 0 === this.state.resultsCount ? 'No' : this.state.resultsCount;
-          title += ' media in category "' + this.state.searchCategories + '"';
+          title = i18next.t('media in category', {count: this.state.resultsCount || 0})
+          title +=  ' "' + this.state.searchCategories + '"';
         } else if (this.state.searchTags) {
-          title = null === this.state.resultsCount || 0 === this.state.resultsCount ? 'No' : this.state.resultsCount;
-          title += ' media in tag "' + this.state.searchTags + '"';
+          title = i18next.t('media in tag', {count: this.state.resultsCount || 0})
+          title +=  ' "' + this.state.searchTags + '"';
         } else {
           if (null === this.state.resultsCount || 0 === this.state.resultsCount) {
-            title = 'No results for "' + this.state.searchQuery + '"';
+            title = i18next.t('No results for') + ' "' + this.state.searchQuery + '"';
           } else {
             title =
-              this.state.resultsCount +
-              ' result' +
-              (1 < this.state.resultsCount ? 's' : '') +
-              ' for "' +
+              i18next.t('result' + (1 < this.state.resultsCount ? 's' : '') + ' for', {
+                count: this.state.resultsCount,
+              }) +
+              ' "' +
               this.state.searchQuery +
               '"';
           }

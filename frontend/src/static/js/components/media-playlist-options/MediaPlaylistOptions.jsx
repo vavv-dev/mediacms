@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { putRequest, csrfToken } from '../../utils/helpers/';
 import { usePopup } from '../../utils/hooks/';
@@ -10,7 +11,7 @@ function mediaPlaylistPopupPages(proceedRemoval, cancelRemoval) {
   const settingOptionsList = {
     deleteMedia: {
       itemType: 'open-subpage',
-      text: 'Remove from playlist',
+      text: i18next.t('Remove from playlist'),
       icon: 'delete',
       buttonAttr: {
         className: 'change-page',

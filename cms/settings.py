@@ -1,6 +1,8 @@
+from datetime import timedelta
 import os
 
 from celery.schedules import crontab
+from django.utils.translation import gettext_lazy as _
 
 DEBUG = False
 
@@ -132,6 +134,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.TokenAuthentication",
+        "auth.authentication.CookieJWTAuthentication",
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 50,
@@ -291,6 +294,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "rest_framework",
     "rest_framework.authtoken",
+    "rest_framework_simplejwt",
     "imagekit",
     "files.apps.FilesConfig",
     "users.apps.UsersConfig",
@@ -307,6 +311,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -456,6 +461,28 @@ CELERY_TASK_ALWAYS_EAGER = False
 if os.environ.get("TESTING"):
     CELERY_TASK_ALWAYS_EAGER = True
 
+LANGUAGES = [
+    ("en", _("English")),
+    ('ko', _('Korean')),
+]
+LANGUAGE_CODE = 'en'
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "AUTH_COOKIE_SECURE": False,
+    "AUTH_COOKIE_HTTP_ONLY": True,
+    "AUTH_COOKIE_SAMESITE": None,
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": True,
+    "SIGNING_KEY": SECRET_KEY,
+    "ALGORITHM": "HS512",
+    # jwt cookie
+    "AUTH_COOKIE_NAME": "jwt-access-token",
+    "AUTH_COOKIE_REFRESH_NAME": "jwt-refresh-token",
+}
 
 try:
     # keep a local_settings.py file for local overrides

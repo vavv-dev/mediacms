@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block headtitle %}Liked media - {{PORTAL_NAME}}{% endblock headtitle %}
+{% block headtitle %}{% trans "Liked media" %} - {{PORTAL_NAME}}{% endblock headtitle %}
 
 {% block topimports %}
 <link href="{% static "css/liked.css" %}" rel="preload" as="style">

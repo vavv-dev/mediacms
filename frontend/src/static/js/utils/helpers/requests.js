@@ -4,6 +4,7 @@ export async function getRequest(url, sync, callback, errorCallback) {
   const requestConfig = {
     timeout: null,
     maxContentLength: null,
+    withCredentials: true,
   };
 
   function responseHandler(result) {

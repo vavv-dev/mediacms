@@ -341,8 +341,6 @@ def view_media(request):
         context["media"] = None
         return render(request, "cms/media.html", context)
 
-    user_or_session = get_user_or_session(request)
-    save_user_action.delay(user_or_session, friendly_token=friendly_token, action="watch")
     context = {}
     context["media"] = friendly_token
     context["media_object"] = media
@@ -423,6 +421,10 @@ class MediaList(APIView):
 
         if show_param != "recommended":
             media = media.prefetch_related("user")
+
+            if request.user.is_authenticated:
+                media = media.annotate_watchstate(request.user)
+
         page = paginator.paginate_queryset(media, request)
 
         serializer = MediaSerializer(page, many=True, context={"request": request})
@@ -696,7 +698,8 @@ class MediaActions(APIView):
                 )
         if action:
             user_or_session = get_user_or_session(request)
-            save_user_action.delay(
+            # User action requires synchronous execution.
+            save_user_action(
                 user_or_session,
                 friendly_token=media.friendly_token,
                 action=action,
@@ -833,6 +836,10 @@ class MediaSearch(APIView):
                 # pagination_class = FastPaginationWithoutCount
                 pagination_class = api_settings.DEFAULT_PAGINATION_CLASS
             paginator = pagination_class()
+
+            if request.user.is_authenticated:
+                media = media.annotate_watchstate(request.user)
+
             page = paginator.paginate_queryset(media, request)
             serializer = MediaSearchSerializer(page, many=True, context={"request": request})
             return paginator.get_paginated_response(serializer.data)
@@ -913,9 +920,13 @@ class PlaylistDetail(APIView):
 
         serializer = PlaylistDetailSerializer(playlist, context={"request": request})
 
-        playlist_media = PlaylistMedia.objects.filter(playlist=playlist).prefetch_related("media__user")
+        # playlist_media = PlaylistMedia.objects.filter(playlist=playlist).prefetch_related("media__user")
+        # playlist_media = [c.media for c in playlist_media]
+        playlist_media = Media.objects.filter(playlistmedia__playlist=playlist).select_related("user")
 
-        playlist_media = [c.media for c in playlist_media]
+        if request.user.is_authenticated:
+            playlist_media = playlist_media.annotate_watchstate(request.user)
+
         playlist_media_serializer = MediaSerializer(playlist_media, many=True, context={"request": request})
         ret = serializer.data
         ret["playlist_media"] = playlist_media_serializer.data
@@ -1309,7 +1320,12 @@ class UserActions(APIView):
         media = []
         if action in VALID_USER_ACTIONS:
             if request.user.is_authenticated:
-                media = Media.objects.select_related("user").filter(mediaactions__user=request.user, mediaactions__action=action).order_by("-mediaactions__action_date")
+                media = (
+                    Media.objects.select_related("user")
+                    .filter(mediaactions__user=request.user, mediaactions__action=action)
+                    .annotate_watchstate(request.user)
+                    .order_by("-mediaactions__action_date")
+                )
             elif request.session.session_key:
                 media = (
                     Media.objects.select_related("user")

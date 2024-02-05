@@ -1,0 +1,750 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-28 18:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: cms/settings.py:462
+msgid "English"
+msgstr "영어"
+
+#: cms/settings.py:463
+msgid "Korean"
+msgstr "한국어"
+
+#: files/forms.py:17 files/models.py:245 templates/cms/tags.html:4
+msgid "Tags"
+msgstr "태그"
+
+#: files/forms.py:17
+msgid "a comma separated list of new tags."
+msgstr "쉼표로 구분된 새 태그 이름"
+
+#: files/forms.py:127
+msgid "Your name:"
+msgstr "이름:"
+
+#: files/forms.py:128
+msgid "Your email:"
+msgstr "이메일"
+
+#: files/forms.py:129
+msgid "Please add your message here and submit:"
+msgstr "여기에 메시지를 추가하고 제출해주세요:"
+
+#: files/models.py:122
+msgid "Date produced"
+msgstr "제작 날짜"
+
+#: files/models.py:124
+msgid "Allow download"
+msgstr "다운로드 허용"
+
+#: files/models.py:124
+msgid "Whether option to download media is shown"
+msgstr "미디어 다운로드 옵션을 표시할지 여부"
+
+#: files/models.py:126
+msgid "Media can be part of one or more categories"
+msgstr "미디어는 하나 이상의 카테고리에 속할 수 있습니다"
+
+#: files/models.py:126
+msgid "Category"
+msgstr "카테고리"
+
+#: files/models.py:136
+msgid "Description"
+msgstr "설명"
+
+#: files/models.py:144
+msgid "Enable comments"
+msgstr "댓글 활성화"
+
+#: files/models.py:144
+msgid "Whether comments will be allowed for this media"
+msgstr "이 미디어에 대한 댓글을 허용할지 여부"
+
+#: files/models.py:149 templates/cms/featured-media.html:4
+msgid "Featured"
+msgstr "인기"
+
+#: files/models.py:152
+msgid "Whether media is globally featured by a MediaCMS editor"
+msgstr "미디어가 MediaCMS 편집자에 의해 전역적으로 인기로 지정되었는지 여부"
+
+#: files/models.py:160
+msgid "Is reviewed"
+msgstr "검토 완료"
+
+#: files/models.py:163
+msgid "Whether media is reviewed, so it can appear on public listings"
+msgstr "미디어가 검토되어 공개 목록에 표시될지 여부"
+
+#: files/models.py:215
+msgid "Reported times"
+msgstr "신고된 횟수"
+
+#: files/models.py:215
+msgid "how many time a media is reported"
+msgstr "미디어가 몇 번 신고되었는지"
+
+#: files/models.py:237
+msgid "State"
+msgstr "상태"
+
+#: files/models.py:242
+msgid "state of Media"
+msgstr "미디어의 상태"
+
+#: files/models.py:245
+msgid "select one or more out of the existing tags"
+msgstr "기존 태그 중 하나 이상 선택"
+
+#: files/models.py:247 users/models.py:33
+msgid "Title"
+msgstr "제목"
+
+#: files/models.py:247
+msgid "media title"
+msgstr "미디어 제목"
+
+#: files/models.py:259
+msgid "Thumbnail time"
+msgstr "썸네일 시간"
+
+#: files/models.py:259
+msgid "Time on video that a thumbnail will be taken"
+msgstr "비디오에서 썸네일이 캡처될 시간"
+
+#: files/models.py:274
+msgid "Upload image"
+msgstr "이미지 업로드"
+
+#: files/models.py:275
+msgid "This image will characterize the media"
+msgstr "이 이미지가 미디어를 특징짓을 것입니다"
+
+#: files/models.py:1184
+msgid "Language"
+msgstr "언어"
+
+#: files/models.py:1189
+msgid "Subtitle/CC file"
+msgstr "자막/CC 파일"
+
+#: files/models.py:1190
+msgid "File has to be WebVTT format"
+msgstr "파일은 WebVTT 형식이어야 합니다"
+
+#: lms/models.py:14
+msgid "female"
+msgstr "여성"
+
+#: lms/models.py:15
+msgid "male"
+msgstr "남성"
+
+#: lms/models.py:16
+msgid "other"
+msgstr "기타"
+
+#: templates/account/account_inactive.html:7
+#: templates/account/account_inactive.html:13
+msgid "Account Inactive"
+msgstr "계정 비활성화됨"
+
+#: templates/account/account_inactive.html:15
+msgid "This account is inactive."
+msgstr "이 계정은 비활성화되었습니다."
+
+#: templates/account/email.html:7
+msgid "Account"
+msgstr "계정"
+
+#: templates/account/email.html:13
+msgid "E-mail Addresses"
+msgstr "이메일 주소"
+
+#: templates/account/email.html:16
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "다음 이메일 주소가 귀하의 계정과 연결되어 있습니다:"
+
+#: templates/account/email.html:30
+msgid "Verified"
+msgstr "확인됨"
+
+#: templates/account/email.html:32
+msgid "Unverified"
+msgstr "미확인"
+
+#: templates/account/email.html:35
+msgid "Primary"
+msgstr "기본"
+
+#: templates/account/email.html:41
+msgid "Make Primary"
+msgstr "기본 설정"
+
+#: templates/account/email.html:42
+msgid "Re-send Verification"
+msgstr "확인 재전송"
+
+#: templates/account/email.html:43
+msgid "Remove"
+msgstr "제거"
+
+#: templates/account/email.html:50
+msgid "Warning:"
+msgstr "경고:"
+
+#: templates/account/email.html:50
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+"현재 설정된 이메일 주소가 없습니다. 알림을 받거나 비밀번호를 재설정하는 등의 "
+"작업을 위해 이메일 주소를 추가해야 합니다."
+
+#: templates/account/email.html:53
+msgid "Add E-mail Address"
+msgstr "이메일 주소 추가"
+
+#: templates/account/email.html:58
+msgid "Add E-mail"
+msgstr "이메일 추가"
+
+#: templates/account/email.html:68
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "선택한 이메일 주소를 정말로 제거하시겠습니까?"
+
+#: templates/account/email/email_confirmation_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because user %(user_display)s has given yours "
+"as an e-mail address to connect their account.\n"
+"\n"
+"To confirm this is correct, go to %(activate_url)s\n"
+msgstr ""
+"%(site_name)s에서 안녕하세요!\n"
+"\n"
+"이 이메일을 받은 이유는 사용자 %(user_display)s이(가) 귀하의 이메일 주소를 자"
+"신의 계정에 연결할 목적으로 제공했기 때문입니다.\n"
+"\n"
+"이것이 올바른지 확인하려면 %(activate_url)s로 이동하십시오\n"
+
+#: templates/account/email/email_confirmation_message.txt:7
+#, python-format
+msgid ""
+"Thank you from %(site_name)s!\n"
+"%(site_domain)s"
+msgstr ""
+"%(site_name)s에서 감사드립니다!\n"
+"%(site_domain)s"
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr "이메일 주소 확인을 위해"
+
+#: templates/account/email/password_reset_key_message.txt:1
+#, python-format
+msgid ""
+"Hello from %(site_name)s!\n"
+"\n"
+"You're receiving this e-mail because you or someone else has requested a "
+"password for your user account.\n"
+"It can be safely ignored if you did not request a password reset. Click the "
+"link below to reset your password."
+msgstr ""
+"%(site_name)s에서 안녕하세요!\n"
+"\n"
+"이 이메일을 받은 이유는 귀하나 다른 사용자가 귀하의 사용자 계정을 위해 비밀번"
+"호를 요청했기 때문입니다.\n"
+"비밀번호 재설정을 요청하지 않았다면 안전하게 무시할 수 있습니다. 아래 링크를 "
+"클릭하여 비밀번호를 재설정하십시오."
+
+#: templates/account/email/password_reset_key_message.txt:8
+#, python-format
+msgid "In case you forgot, your username is %(username)s."
+msgstr "잊어버렸을 경우, 사용자 이름은 %(username)s입니다."
+
+#: templates/account/email/password_reset_key_subject.txt:3
+msgid "Password Reset E-mail"
+msgstr "비밀번호 재설정 이메일"
+
+#: templates/account/email_confirm.html:15
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+"<a href=\"mailto:%(email)s\">%(email)s</a>이(가) 사용자 %(user_display)s의 이"
+"메일 주소임을 확인하십시오."
+
+#: templates/account/email_confirm.html:19
+msgid "Confirm"
+msgstr "확인"
+
+#: templates/account/email_confirm.html:26
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+"이 이메일 확인 링크가 만료되었거나 잘못되었습니다. 새로운 이메일 확인 요청을 "
+"<a href=\"%(email_url)s\">발급</a>하십시오."
+
+#: templates/account/login.html:4 templates/account/login.html:10
+#: templates/account/login.html:20 templates/cms/add-media.html:144
+msgid "Sign In"
+msgstr "로그인"
+
+#: templates/account/login.html:12
+#, python-format
+msgid ""
+"<p>If you have not created an account yet, then please <a "
+"href=\"%(signup_url)s\">sign up</a> first.</p>"
+msgstr ""
+"<p>아직 계정이 없으신가요? 그럼 <a href=\"%(signup_url)s\">가입</a>해주세요."
+"</p>"
+
+#: templates/account/login.html:21 templates/cms/add-media.html:143
+msgid "Forgot Password?"
+msgstr "비밀번호를 잊으셨나요?"
+
+#: templates/account/logout.html:10 templates/account/logout.html:19
+msgid "Sign Out"
+msgstr "로그아웃"
+
+#: templates/account/logout.html:12
+msgid "Are you sure you want to sign out?"
+msgstr "로그아웃하시겠습니까?"
+
+#: templates/account/logout.html:20
+msgid "Cancel"
+msgstr "취소"
+
+#: templates/account/messages/cannot_delete_primary_email.txt:2
+#, python-format
+msgid "You cannot remove your primary e-mail address (%(email)s)."
+msgstr "기본 이메일 주소 (%(email)s)를 제거할 수 없습니다."
+
+#: templates/account/messages/email_confirmation_sent.txt:2
+#, python-format
+msgid "Confirmation e-mail sent to %(email)s."
+msgstr "확인 이메일이 %(email)s로 전송되었습니다."
+
+#: templates/account/messages/email_confirmed.txt:2
+#, python-format
+msgid "You have confirmed %(email)s."
+msgstr "%(email)s을(를) 확인했습니다."
+
+#: templates/account/messages/email_deleted.txt:2
+#, python-format
+msgid "Removed e-mail address %(email)s."
+msgstr "이메일 주소 %(email)s이(가) 제거되었습니다."
+
+#: templates/account/messages/logged_in.txt:4
+#, python-format
+msgid "Successfully signed in as %(name)s."
+msgstr "%(name)s로 로그인되었습니다."
+
+#: templates/account/messages/logged_out.txt:2
+msgid "You have signed out."
+msgstr "로그아웃되었습니다."
+
+#: templates/account/messages/password_changed.txt:2
+msgid "Password successfully changed."
+msgstr "비밀번호가 성공적으로 변경되었습니다."
+
+#: templates/account/messages/password_set.txt:2
+msgid "Password successfully set."
+msgstr "비밀번호가 성공적으로 설정되었습니다."
+
+#: templates/account/messages/primary_email_set.txt:2
+msgid "Primary e-mail address set."
+msgstr "기본 이메일 주소가 설정되었습니다."
+
+#: templates/account/messages/unverified_primary_email.txt:2
+msgid "Your primary e-mail address must be verified."
+msgstr "기본 이메일 주소를 확인해야 합니다."
+
+#: templates/account/password_change.html:8
+#: templates/account/password_change.html:14
+#: templates/account/password_change.html:19
+#: templates/account/password_reset_from_key.html:7
+#: templates/account/password_reset_from_key.html:13
+#: templates/account/password_reset_from_key_done.html:7
+#: templates/account/password_reset_from_key_done.html:13
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+#: templates/account/password_reset.html:11
+#: templates/account/password_reset_done.html:8
+#: templates/account/password_reset_done.html:15
+msgid "Password Reset"
+msgstr "비밀번호 재설정"
+
+#: templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+"비밀번호를 잊으셨나요? 아래에 이메일 주소를 입력하면 비밀번호를 재설정할 수 "
+"있는 이메일을 보내드립니다."
+
+#: templates/account/password_reset.html:21
+msgid "Reset My Password"
+msgstr "비밀번호 재설정"
+
+#: templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr "비밀번호를 재설정하는 데 문제가 있으면 문의해주세요."
+
+#: templates/account/password_reset_done.html:21
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr "이메일을 보냈습니다. 몇 분 내에 받지 못하면 문의해주세요."
+
+#: templates/account/password_reset_from_key.html:13
+msgid "Bad Token"
+msgstr "잘못된 토큰"
+
+#: templates/account/password_reset_from_key.html:17
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+"비밀번호 재설정 링크가 잘못되었을 가능성이 있습니다. 이미 사용되었을 수도 있"
+"습니다. <a href=\"%(passwd_reset_url)s\">새로운 비밀번호 재설정을 요청</a>하"
+"세요."
+
+#: templates/account/password_reset_from_key.html:23
+msgid "change password"
+msgstr "비밀번호 변경"
+
+#: templates/account/password_reset_from_key.html:26
+#: templates/account/password_reset_from_key_done.html:14
+msgid "Your password is now changed."
+msgstr "비밀번호가 변경되었습니다."
+
+#: templates/account/password_set.html:7 templates/account/password_set.html:13
+#: templates/account/password_set.html:18
+msgid "Set Password"
+msgstr "비밀번호 설정"
+
+#: templates/account/signup.html:4 templates/account/signup.html:10
+msgid "Sign Up"
+msgstr "가입하기"
+
+#: templates/account/signup.html:12
+#, python-format
+msgid ""
+"<p>Already have an account? Then please <a href=\"%(login_url)s\">sign in</"
+"a>.</p>"
+msgstr ""
+"<p>이미 계정이 있으신가요? 그럼 <a href=\"%(login_url)s\">로그인</a>해주세요."
+"</p>"
+
+#: templates/account/signup.html:20
+msgid "Sign Up &raquo;"
+msgstr "가입 &raquo;"
+
+#: templates/account/signup_closed.html:7
+#: templates/account/signup_closed.html:13
+msgid "Sign Up Closed"
+msgstr "가입이 닫혔습니다"
+
+#: templates/account/signup_closed.html:15
+msgid "We are sorry, but the sign up is currently closed."
+msgstr "죄송합니다만, 현재 가입이 닫혀 있습니다."
+
+#: templates/account/snippets/already_logged_in.html:5
+msgid "Note"
+msgstr "참고"
+
+#: templates/account/snippets/already_logged_in.html:5
+#, python-format
+msgid "you are already logged in as %(user_display)s."
+msgstr "%(user_display)s로 이미 로그인되어 있습니다."
+
+#: templates/account/verification_sent.html:10
+msgid "Verify Your E-mail Address"
+msgstr "이메일 주소 확인"
+
+#: templates/account/verification_sent.html:12
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"확인을 위해 이메일을 보냈습니다. 제공된 링크를 따라가서 가입 프로세스를 완료"
+"하세요. 몇 분 안에 받지 못하면 문의해주세요."
+
+#: templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"\t\tyou are who you claim to be. For this purpose, we require that you\n"
+"\t\tverify ownership of your e-mail address. "
+msgstr ""
+"이 사이트의 이 부분은 당신이 주장하는 대로 본인인지 확인을 요구합니다. 이를 "
+"위해 이메일 주소의 소유권을 확인하도록 요청합니다."
+
+#: templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"\t\tverification. Please click on the link inside this e-mail. Please\n"
+"\t\tcontact us if you do not receive it within a few minutes."
+msgstr ""
+"확인을 위해 이메일을 보냈습니다. 이메일 안의 링크를 클릭하세요. 몇 분 안에 받"
+"지 못하면 문의해주세요."
+
+#: templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+"<strong>참고:</strong> 여전히 <a href=\"%(email_url)s\">이메일 주소를 변경</"
+"a>할 수 있습니다."
+
+#: templates/cms/about.html:4 templates/cms/about.html:43
+msgid "About"
+msgstr "정보"
+
+#: templates/cms/about.html:46
+msgid ""
+"\n"
+"    <p><a href=\"https://mediacms.io\">MediaCMS</a> is a modern, fully "
+"featured open source video and media CMS. It is developed to meet the needs "
+"of modern web platforms for viewing and sharing media.</p>\n"
+"    "
+msgstr ""
+
+#: templates/cms/add-media.html:4
+msgid "Add new media"
+msgstr "새 미디어 추가"
+
+#: templates/cms/add-media.html:41
+msgid "Drag and drop files"
+msgstr "파일을 끌어다 놓으세요"
+
+#: templates/cms/add-media.html:42
+msgid "or"
+msgstr "또는"
+
+#: templates/cms/add-media.html:44
+msgid "Browse your files"
+msgstr "파일 찾아보기"
+
+#: templates/cms/add-media.html:61
+msgid "Retry"
+msgstr "다시 시도"
+
+#: templates/cms/add-media.html:76
+msgid "Edit filename"
+msgstr "파일 이름 편집"
+
+#: templates/cms/add-media.html:77
+msgid "Delete"
+msgstr "삭제"
+
+#: templates/cms/add-media.html:79
+msgid "View media"
+msgstr "미디어 보기"
+
+#: templates/cms/add-media.html:82
+msgid "SELECTION"
+msgstr "선택"
+
+#: templates/cms/add-media.html:83
+msgid "Pause"
+msgstr "일시 정지"
+
+#: templates/cms/add-media.html:92
+msgid "CLOSE"
+msgstr "닫기"
+
+#: templates/cms/add-media.html:98
+msgid "NO"
+msgstr "아니오"
+
+#: templates/cms/add-media.html:99
+msgid "YES"
+msgstr "예"
+
+#: templates/cms/add-media.html:106
+msgid "CANCEL"
+msgstr "취소"
+
+#: templates/cms/add-media.html:107
+msgid "OK"
+msgstr "확인"
+
+#: templates/cms/add-media.html:122
+msgid "<a href='/contact'>Contact</a> the admin owners for more information."
+msgstr "자세한 정보는 <a href='/contact'>관리자에게 문의하세요</a>."
+
+#: templates/cms/add-media.html:133
+msgid "Please login or register before you upload a media!"
+msgstr "미디어를 업로드하기 전에 로그인 또는 등록하세요!"
+
+#: templates/cms/add-media.html:137
+msgid "If you have not created an account yet, then please first"
+msgstr "아직 계정을 만들지 않았다면 먼저"
+
+#: templates/cms/add-media.html:137
+msgid "sign up"
+msgstr "가입하세요"
+
+#: templates/cms/add_subtitle.html:4 templates/cms/add_subtitle.html:9
+msgid "Add subtitle"
+msgstr "자막 추가"
+
+#: templates/cms/add_subtitle.html:13
+msgid "Add"
+msgstr "추가 하기"
+
+#: templates/cms/categories.html:4
+msgid "Categories"
+msgstr "카테고리"
+
+#: templates/cms/contact.html:4 templates/cms/contact.html:48
+msgid "Contact us"
+msgstr "의견 보내기"
+
+#: templates/cms/contact.html:52
+msgid "Submit"
+msgstr "제출 하기"
+
+#: templates/cms/edit_media.html:5
+msgid "Edit media"
+msgstr "미디어 편집"
+
+#: templates/cms/edit_media.html:15
+msgid "Edit Media"
+msgstr "미디어 편집"
+
+#: templates/cms/edit_media.html:19
+msgid "Update Media"
+msgstr "미디어 업데이트"
+
+#: templates/cms/history.html:4
+msgid "History"
+msgstr "기록"
+
+#: templates/cms/latest-media.html:4
+msgid "Recent uploads"
+msgstr "신규"
+
+#: templates/cms/liked_media.html:4
+msgid "Liked media"
+msgstr "좋아요"
+
+#: templates/cms/manage_comments.html:4
+msgid "Manage comments"
+msgstr "댓글 관리"
+
+#: templates/cms/manage_media.html:4
+msgid "Manage media"
+msgstr "미디어 관리"
+
+#: templates/cms/manage_users.html:4
+msgid "Manage users"
+msgstr "사용자 관리"
+
+#: templates/cms/members.html:4
+msgid "Members"
+msgstr "사용자"
+
+#: templates/cms/recommended-media.html:4
+msgid "Recommended"
+msgstr "추천"
+
+#: templates/cms/tos.html:4 templates/cms/tos.html:43
+msgid "Terms"
+msgstr "이용약관"
+
+#: templates/cms/tos.html:45
+msgid "Terms of service"
+msgstr "이용약관"
+
+#: templates/cms/user_edit.html:3
+msgid "Edit profile"
+msgstr "프로필 편집"
+
+#: templates/cms/user_edit.html:11
+msgid "Edit Profile"
+msgstr "프로필 편집"
+
+#: templates/cms/user_edit.html:15
+msgid "Update Profile"
+msgstr "프로필 업데이트"
+
+#: users/models.py:27
+msgid "About me"
+msgstr "자기 소개"
+
+#: users/models.py:29
+msgid "full name"
+msgstr "전체 이름"
+
+#: users/models.py:30
+msgid "date added"
+msgstr "추가된 날짜"
+
+#: users/models.py:31
+msgid "Is featured"
+msgstr "인기 여부"
+
+#: users/models.py:34
+msgid "advanced user"
+msgstr "고급 사용자"
+
+#: users/models.py:37
+msgid ""
+"Whether you will receive email notifications for comments added to your "
+"content"
+msgstr "귀하의 콘텐츠에 추가된 댓글에 대한 이메일 알림을 받을지 여부"
+
+#: users/models.py:40
+msgid "Location"
+msgstr "위치"
+
+#: users/models.py:41
+msgid "MediaCMS Editor"
+msgstr "MediaCMS 편집자"
+
+#: users/models.py:42
+msgid "MediaCMS Manager"
+msgstr "MediaCMS 관리자"
+
+#: users/models.py:43
+msgid "Whether allow contact will be shown on profile page"
+msgstr "프로필 페이지에 연락처를 표시할지 여부"
+
+#: users/validators.py:11
+msgid ""
+"Enter a valid username. This value may contain only English letters and "
+"numbers"
+msgstr ""
+"유효한 사용자 이름을 입력하세요. 이 값은 영어 문자와 숫자만 포함할 수 있습니"
+"다."

@@ -10,6 +10,7 @@ import {
   MediaItemEditLink,
 } from '../../components/list-item/includes/items';
 import { useItem } from './useItem';
+import { selected as langSelected } from '../languages';
 
 export function itemClassname(defaultClassname, inheritedClassname, isActiveInPlaylistPlayback) {
   let classname = defaultClassname;
@@ -56,7 +57,7 @@ export function useMediaItem(props) {
       return null;
     }
 
-    const publishDate = format(new Date(props.publish_date));
+    const publishDate = format(new Date(props.publish_date), langSelected);
     const publishDateTime =
       'string' === typeof props.publish_date
         ? Date.parse(props.publish_date)

@@ -216,9 +216,14 @@ def show_recommended_media(request, limit=100):
     pmi = cache.get("popular_media_ids")
     # produced by task get_list_of_popular_media and cached
     if pmi:
-        media = list(models.Media.objects.filter(friendly_token__in=pmi).filter(basic_query).prefetch_related("user")[:limit])
+        media = models.Media.objects.filter(friendly_token__in=pmi).filter(basic_query).prefetch_related("user")[:limit]
     else:
-        media = list(models.Media.objects.filter(basic_query).order_by("-views", "-likes").prefetch_related("user")[:limit])
+        media = models.Media.objects.filter(basic_query).order_by("-views", "-likes").prefetch_related("user")[:limit]
+
+    if request.user.is_authenticated:
+        media = media.annotate_watchstate(request.user)
+
+    media = list(media)
     random.shuffle(media)
     return media
 
@@ -243,7 +248,12 @@ def show_related_media_content(media, request, limit):
     # and include author videos in any case
 
     q_author = Q(listable=True, user=media.user)
-    m = list(models.Media.objects.filter(q_author).order_by().prefetch_related("user")[:limit])
+    m = models.Media.objects.filter(q_author).order_by().prefetch_related("user")[:limit]
+
+    if request.user.is_authenticated:
+        m = m.annotate_watchstate(request.user)
+
+    m = list(m)
 
     # order by random criteria so that it doesn't bring the same results
     # attention: only fields that are indexed make sense here! also need

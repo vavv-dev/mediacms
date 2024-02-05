@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { PageStore } from '../../utils/stores/';
 
@@ -43,22 +44,22 @@ export function ReportForm(props) {
         className="report-form"
         style={null !== maxFormContentHeight ? { maxHeight: maxFormContentHeight + 'px' } : null}
       >
-        <div className="form-title">Report media</div>
+        <div className="form-title">{i18next.t('Report media')}</div>
         <div className="form-field">
-          <span className="label">URL</span>
+          <span className="label">{i18next.t('URL')}</span>
           <input type="text" readOnly value={props.mediaUrl} />
         </div>
         <div className="form-field">
-          <span className="label">Description</span>
+          <span className="label">{i18next.t('Description')}</span>
           <textarea ref={reportMessageTextRef} required></textarea>
         </div>
-        <div className="form-field form-help-text">Reported media is reviewed</div>
+        <div className="form-field form-help-text">{i18next.t('Reported media is reviewed')}</div>
       </div>
       <div ref={formActionsBottomRef} className="form-actions-bottom">
         <button className="cancel" onClick={cancelReportForm}>
-          CANCEL
+          {i18next.t("CANCEL")}
         </button>
-        <button onClick={submitReportForm}>SUBMIT</button>
+        <button onClick={submitReportForm}>{i18next.t("SUBMIT")}</button>
       </div>
     </form>
   );

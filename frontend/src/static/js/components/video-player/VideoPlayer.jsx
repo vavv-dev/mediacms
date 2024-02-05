@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import urlParse from 'url-parse';
+import {MediaPageStore} from '../../utils/stores';
+import {MediaPageActions} from '../../utils/actions';
 
 import MediaPlayer from 'mediacms-player/dist/mediacms-player.js';
 import 'mediacms-player/dist/mediacms-player.css';
@@ -195,8 +197,50 @@ export function VideoPlayer(props) {
     player && player.player.one('loadedmetadata', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const paramT = Number(urlParams.get('t'));
-      const timestamp = !isNaN(paramT) ? paramT : 0;
-      player.player.currentTime(timestamp);
+      let timestamp = !isNaN(paramT) ? paramT : 0;
+
+      if (!timestamp) {
+        const watch = MediaPageStore.get('media-watch');
+        if (watch) {
+          timestamp = watch.position || 0;
+        }
+      }
+
+      setTimeout(() => {
+        player.player.currentTime(timestamp);
+        player.player.cache_.initTime = timestamp;
+      }, 1);
+    });
+
+    let lastTimeupdated = -1;
+    player && player.player.on('timeupdate', () => {
+      const currentTime = player.player.currentTime();
+      const flooredTime = Math.floor(currentTime);
+      if (lastTimeupdated === flooredTime) {
+        return;
+      }
+      lastTimeupdated = flooredTime;
+
+      // update watch
+      const watch = MediaPageStore.get('media-watch');
+      watch.watched[flooredTime] = 1;
+      watch.position = flooredTime;
+    });
+
+
+    player && player.player.one('ended', () => {
+      MediaPageStore.get('media-watch').position = 0;
+    });
+
+    player && player.player.on('pause', MediaPageActions.watchMedia);
+    window.addEventListener('beforeunload', MediaPageActions.watchMedia);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        player.player.pause();
+      } else {
+        player.player.play();
+      }
     });
 
     return () => {

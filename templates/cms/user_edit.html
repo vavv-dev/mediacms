@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load static %}
-{% block headtitle %}Edit profile - {% endblock headtitle %}
+{% load static i18n %}
+{% block headtitle %}{% trans "Edit profile" %} - {% endblock headtitle %}
 
 {% block innercontent %}
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
@@ -8,11 +8,11 @@
 
 <div class="user-action-form-wrap">
 	<div class="user-action-form-inner">
-		<h1>Edit Profile</h1>
+		<h1>{% trans "Edit Profile" %}</h1>
 		<form enctype="multipart/form-data" action="" method="post" class="post-form">
 			{% csrf_token %}
 			{{ form.as_p }}
-			<button class="primaryAction" type="submit">Update Profile</button>
+			<button class="primaryAction" type="submit">{% trans "Update Profile" %}</button>
 		</form>
 	</div>
 </div>

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { LinksContext } from '../../utils/contexts/';
 import { PageStore, MediaPageStore } from '../../utils/stores/';
@@ -142,7 +143,7 @@ export function MediaShareEmbed(props) {
         <div ref={onRightRef} className="on-right">
           <div ref={onRightTopRef} className="on-right-top">
             <div className="on-right-top-inner">
-              <span className="ttl">Embed Video</span>
+              <span className="ttl">{i18next.t("Embed Video")}</span>
               <CircleIconButton type="button" onClick={onClickEmbedShareExit}>
                 <MaterialIcon type="close" />
               </CircleIconButton>
@@ -169,7 +170,7 @@ export function MediaShareEmbed(props) {
             ></textarea>
 
             <div className="iframe-config">
-              <div className="iframe-config-options-title">Embed options</div>
+              <div className="iframe-config-options-title">{i18next.t("Embed options")}</div>
 
               <div className="iframe-config-option">
                 {/*<div className="option-title">
@@ -181,7 +182,7 @@ export function MediaShareEmbed(props) {
                     <div className="options-group">
                       <label style={{ minHeight: '36px' }}>
                         <input type="checkbox" checked={keepAspectRatio} onChange={onKeepAspectRatioChange} />
-                        Keep aspect ratio
+                        {i18next.t("Keep aspect ratio")}
                       </label>
                     </div>
 
@@ -209,7 +210,7 @@ export function MediaShareEmbed(props) {
                     <NumericInputWithUnit
                       valueCallback={onEmbedWidthValueChange}
                       unitCallback={onEmbedWidthUnitChange}
-                      label={'Width'}
+                      label={i18next.t('Width')}
                       defaultValue={parseInt(embedWidthValue, 10)}
                       defaultUnit={embedWidthUnit}
                       minValue={1}
@@ -222,7 +223,7 @@ export function MediaShareEmbed(props) {
                     <NumericInputWithUnit
                       valueCallback={onEmbedHeightValueChange}
                       unitCallback={onEmbedHeightUnitChange}
-                      label={'Height'}
+                      label={i18next.t('Height')}
                       defaultValue={parseInt(embedHeightValue, 10)}
                       defaultUnit={embedHeightUnit}
                       minValue={1}
@@ -236,7 +237,7 @@ export function MediaShareEmbed(props) {
           </div>
 
           <div ref={onRightBottomRef} className="on-right-bottom">
-            <button onClick={onClickCopyMediaLink}>COPY</button>
+            <button onClick={onClickCopyMediaLink}>{i18next.t("COPY")}</button>
           </div>
         </div>
       </div>

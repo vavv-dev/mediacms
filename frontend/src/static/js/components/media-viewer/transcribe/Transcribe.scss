@@ -1,0 +1,105 @@
+:root {
+  --vjs-transcribe-primary-color: #8cc04f;
+  --vjs-transcribe-secondary-color: #d9d9d7;
+}
+
+.transcribe {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.transcribe .transcript {
+  overflow-y: scroll;
+  height: 400px;
+  clear: both;
+  border: 1px solid var(--vjs-transcribe-secondary-color, #d9d9d7);
+  margin-top: 0.5rem;
+}
+
+.transcribe .cuetimestamp {
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  padding-right: 0.4rem;
+  display: flex;
+}
+
+.transcribe .cueline {
+  cursor: pointer;
+  display: flex;
+  font-size: 0.9rem;
+  background-color: transparent;
+  color: #343434;
+  align-items: center;
+  padding: 0.1rem 0.8rem;
+}
+
+.transcribe .active-cue {
+  background-color: #ffdb6fc4 !important;
+  color: #000 !important;
+  cursor: pointer;
+  font-weight: 500;
+  transition: ease 0.5s background-color;
+}
+
+.transcribe .cueline:hover:not(.active-cue) {
+  background-color: #ffdb6f69;
+}
+
+.transcribe .text,
+.transcribe .cuetimestamp {
+  padding: 0.2rem;
+}
+
+.transcribe .text {
+  display: block;
+  flex-grow: 1;
+}
+
+.transcribe .clip {
+  font-size: 0.9rem;
+  min-width: var(--checkbox-width);
+  margin-right: 0;
+}
+
+.transcribe .control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.4rem;
+}
+
+.transcribe .control > :last-child {
+  display: flex;
+  flex-grow: 1;
+  justify-content: end;
+}
+
+.transcribe .control > div > * + * {
+  margin-left: 0.5rem;
+}
+
+.transcribe select {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.transcribe label {
+  margin-bottom: 0;
+}
+
+.transcribe highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.transcribe .watched {
+  background-color: #eee;
+  color: #3e3e3e;
+}
+
+@media (max-width: 688px) {
+  .transcribe .help {
+    display: none;
+  }
+}

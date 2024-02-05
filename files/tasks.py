@@ -1,10 +1,12 @@
 import json
+import math
 import os
 import re
 import shutil
 import subprocess
 import tempfile
 from datetime import datetime, timedelta
+from itertools import zip_longest
 
 from celery import Task
 from celery import shared_task as task
@@ -17,6 +19,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.core.files import File
 from django.db.models import Q
+from django.utils.timezone import localtime
 
 from actions.models import USER_MEDIA_ACTIONS, MediaAction
 from users.models import User
@@ -593,7 +596,7 @@ def save_user_action(user_or_session, friendly_token=None, action="watch", extra
     if not (user or session_key):
         return False
 
-    if action in ["like", "dislike", "watch", "report"]:
+    if action in ["like", "dislike", "report"]:
         if not pre_save_action(
             media=media,
             user=user,
@@ -604,10 +607,41 @@ def save_user_action(user_or_session, friendly_token=None, action="watch", extra
             return False
 
     if action == "watch":
-        if user:
-            MediaAction.objects.filter(user=user, media=media, action="watch").delete()
-        else:
-            MediaAction.objects.filter(session_key=session_key, media=media, action="watch").delete()
+        ma = MediaAction.objects.filter(
+            Q(user=user) if user else Q(session_key=session_key),
+            media=media, 
+            action="watch"
+        ).order_by("id").last()
+
+        if ma:
+            now = localtime()
+
+            if user:
+
+                new_watch = MediaAction.watch_data(extra_info)
+                prev_watch = MediaAction.watch_data(ma.extra_info)
+
+                new_watched = new_watch["watched"]
+                prev_watched = prev_watch["watched"]
+
+                # merger watched
+                if new_watched != prev_watched:
+                    new_watch["watched"] = [
+                        (old or 0) | (new or 0)
+                        for old, new in zip_longest(new_watched, prev_watched)
+                    ]
+
+                ma.action_date = now
+                ma.extra_info = json.dumps(new_watch)
+                ma.remote_ip = remote_ip,
+                ma.save()
+
+            if now - ma.action_date > timedelta(seconds=math.ceil(media.duration)):
+                media.views += 1
+                Media.objects.filter(friendly_token=friendly_token).update(views=media.views)
+
+            return True
+
     if action == "rate":
         try:
             score = extra_info.get("score")
@@ -642,14 +676,7 @@ def save_user_action(user_or_session, friendly_token=None, action="watch", extra
     )
     ma.save()
 
-    if action == "watch":
-        media.views += 1
-        Media.objects.filter(friendly_token=friendly_token).update(views=media.views)
-
-        # update field without calling save, to avoid post_save signals being triggered
-        # same in other actions
-
-    elif action == "report":
+    if action == "report":
         media.reported_times += 1
 
         if media.reported_times >= settings.REPORTED_TIMES_THRESHOLD:

@@ -3,6 +3,7 @@ import { usePopup } from '../../utils/hooks/';
 import { CircleIconButton, MaterialIcon, NavigationContentApp, PopupMain } from '../_shared/';
 import { MediaShareEmbed } from './MediaShareEmbed';
 import { MediaShareOptions } from './MediaShareOptions';
+import i18next from 'i18next';
 
 function mediaSharePopupPages() {
   return {
@@ -54,7 +55,7 @@ export function MediaShareButton(props) {
           <CircleIconButton type="span">
             <MaterialIcon type="share" />
           </CircleIconButton>
-          <span>SHARE</span>
+          <span>{i18next.t('SHARE')}</span>
         </button>
       </PopupTrigger>
 

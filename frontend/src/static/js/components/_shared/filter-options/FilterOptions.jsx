@@ -1,4 +1,5 @@
 import React from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 
 import { MaterialIcon } from '../material-icon/MaterialIcon.jsx';
@@ -8,7 +9,7 @@ export function FilterOptions(props) {
     return (
       <div key={filter.id} className={filter.id === props.selected ? 'active' : ''}>
         <button onClick={props.onSelect} filter={props.id} value={filter.id}>
-          <span>{filter.title}</span>
+          <span>{i18next.t(filter.title)}</span>
           {filter.id === props.selected ? <MaterialIcon type="close" /> : null}
         </button>
       </div>

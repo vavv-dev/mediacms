@@ -1,4 +1,5 @@
 import React from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import UrlParse from 'url-parse';
 import { ApiUrlContext, MemberContext, SiteContext } from '../utils/contexts/';
@@ -51,7 +52,7 @@ class ChannelContactForm extends React.PureComponent {
           function () {
             // FIXME: Without delay creates conflict [ Uncaught Error: Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch. ].
             PageActions.addNotification(
-              'Your message was successfully submitted to ' + this.props.author.name,
+              i18next.t('Your message was successfully submitted to ',  this.props.author.name),
               'messageSubmitSucceed'
             );
           }.bind(this),
@@ -72,7 +73,7 @@ class ChannelContactForm extends React.PureComponent {
         setTimeout(
           function () {
             // FIXME: Without delay creates conflict [ Uncaught Error: Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch. ].
-            PageActions.addNotification('Your message failed to submit. Please try again', 'messageSubmitFailed');
+            PageActions.addNotification(i18next.t('Your message failed to submit. Please try again'), 'messageSubmitFailed');
           }.bind(this),
           100
         );
@@ -118,11 +119,11 @@ class ChannelContactForm extends React.PureComponent {
     return (
       <div className="media-list-row profile-contact">
         <div className="media-list-header">
-          <h2>Contact</h2>
+          <h2>{i18next.t('Contact')}</h2>
         </div>
         <form method="post" className={'user-contact-form' + (this.state.isSending ? ' pending-response' : '')}>
           <span>
-            <label>Subject</label>
+            <label>{i18next.t('Subject')}</label>
             <input
               ref="msgSubject"
               type="text"
@@ -132,7 +133,7 @@ class ChannelContactForm extends React.PureComponent {
             />
           </span>
           <span>
-            <label>Message</label>
+            <label>{i18next.t('Message')}</label>
             <textarea
               ref="msgBody"
               required={true}
@@ -142,7 +143,7 @@ class ChannelContactForm extends React.PureComponent {
               value={this.state.body}
             ></textarea>
           </span>
-          <button onClick={this.onSubmit}>SUBMIT</button>
+          <button onClick={this.onSubmit}>{i18next.t('SUBMIT')}</button>
         </form>
       </div>
     );

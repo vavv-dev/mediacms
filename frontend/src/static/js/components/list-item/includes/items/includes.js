@@ -1,7 +1,9 @@
 import React from 'react';
+import i18next from 'i18next';
 import { format } from 'timeago.js';
 import { formatViewsNumber, imageExtension } from '../../../../utils/helpers/';
 import { VideoPlayerByPageLink } from '../../../video-player/VideoPlayerByPageLink';
+import { selected as langSelected } from '../../../../utils/languages';
 
 export function ItemDescription(props) {
   return '' === props.description ? null : (
@@ -44,13 +46,15 @@ export function ItemTitleLink(props) {
 }
 
 export function UserItemMemberSince(props) {
-  return <time key="member-since">Member for {format(new Date(props.date)).replace(' ago', '')}</time>;
+  return (
+    <time key="member-since">{i18next.t('Member for', { since: format(new Date(props.date), langSelected) })}</time>
+  );
 }
 
 export function TaxonomyItemMediaCount(props) {
   return (
     <span key="item-media-count" className="item-media-count">
-      {' ' + props.count} media
+      {i18next.t('media', { count: props.count })}
     </span>
   );
 }
@@ -74,7 +78,7 @@ export function MediaItemEditLink(props) {
 
   return !link ? null : (
     <a href={link} title="Edit media" className="item-edit-link">
-      EDIT MEDIA
+      {i18next.t('EDIT MEDIA')}
     </a>
   );
 }
@@ -135,7 +139,9 @@ export function MediaItemAuthorLink(props) {
 
 export function MediaItemMetaViews(props) {
   return (
-    <span className="item-views">{formatViewsNumber(props.views) + ' ' + (1 >= props.views ? 'view' : 'views')}</span>
+    <span className="item-views">
+      {i18next.t(1 >= props.views ? 'view' : 'views', { count: formatViewsNumber(props.views) })}
+    </span>
   );
 }
 
@@ -146,6 +152,39 @@ export function MediaItemMetaDate(props) {
         {props.text}
       </time>
     </span>
+  );
+}
+
+export function MediaItemCompletion(props) {
+  return (
+    <span className="item-completion">
+      {props.completion >= 0.98 ? (
+        <span className="material-icons">done</span>
+      ) : (
+        <span className="completion-bar" style={{ width: `${parseInt(props.completion * 100, 10)}%` }}></span>
+      )}
+    </span>
+  );
+}
+
+export function MediaItemClips(props) {
+  const displayDuration = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+  };
+
+  return (
+    props.clips && (
+      <span className="item-clips">
+        <span className="material-icons">link</span>
+        {props.clips.split(',').reverse().slice(0, 4).map((clip, i) => (
+          <a key={i} className="clip-link" href={`${props.link}&t=${clip}`}>
+            {displayDuration(clip)}
+          </a>
+        ))}
+      </span>
+    )
   );
 }
 

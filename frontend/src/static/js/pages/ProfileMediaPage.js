@@ -1,4 +1,5 @@
 import React from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { ApiUrlContext, LinksConsumer, MemberContext } from '../utils/contexts';
 import { PageStore, ProfilePageStore } from '../utils/stores';
@@ -92,11 +93,11 @@ export class ProfileMediaPage extends Page {
           let title = '';
 
           if (!count) {
-            title = 'No results for "' + this.state.query + '"';
+            title = i18next.t('No results for') + ' "' + this.state.query + '"';
           } else if (1 === count) {
-            title = '1 result for "' + this.state.query + '"';
+            title = i18next.t('1 result for') + ' "' + this.state.query + '"';
           } else {
-            title = count + ' results for "' + this.state.query + '"';
+            title = i18next.t('results for', {count}) + ' "' + this.state.query + '"';
           }
 
           this.setState({

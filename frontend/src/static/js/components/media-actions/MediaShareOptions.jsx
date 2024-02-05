@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import i18next from 'i18next';
 import { ShareOptionsContext } from '../../utils/contexts/';
 import { PageStore, MediaPageStore } from '../../utils/stores/';
 import { PageActions, MediaPageActions } from '../../utils/actions/';
@@ -109,7 +110,7 @@ function ShareOptions() {
               <span>
                 <i className="material-icons">code</i>
               </span>
-              <span>Embed</span>
+              <span>{i18next.t('Embed')}</span>
             </button>
           </div>
         );
@@ -124,7 +125,7 @@ function ShareOptions() {
               rel="noreferrer"
             >
               <span></span>
-              <span>{shareOptions[k].title}</span>
+              <span>{i18next.t(shareOptions[k].title)}</span>
             </a>
           </div>
         );
@@ -133,9 +134,9 @@ function ShareOptions() {
           <div key="share-email" className="sh-option share-email">
             <a href={shareOptions[k].shareUrl} title="">
               <span>
-                <i className="material-icons">email</i>
+                <i className="material-icons">{i18next.t('email')}</i>
               </span>
-              <span>{shareOptions[k].title}</span>
+              <span>{i18next.t(shareOptions[k].title)}</span>
             </a>
           </div>
         );
@@ -144,7 +145,7 @@ function ShareOptions() {
           <div key={'share-' + k} className={'sh-option share-' + k}>
             <a href={shareOptions[k].shareUrl} title="" target="_blank" rel="noreferrer">
               <span></span>
-              <span>{shareOptions[k].title}</span>
+              <span>{i18next.t(shareOptions[k].title)}</span>
             </a>
           </div>
         );
@@ -299,7 +300,7 @@ export function MediaShareOptions(props) {
         className="scrollable-content"
         style={null !== dimensions.maxFormContentHeight ? { maxHeight: dimensions.maxFormContentHeight + 'px' } : null}
       >
-        <div className="share-popup-title">Share media</div>
+        <div className="share-popup-title">{i18next.t("Share media")}</div>
         {shareOptions.length ? (
           <div className="share-options">
             {sliderButtonsVisible.prev ? <PreviousSlideButton onClick={prevSlide} /> : null}
@@ -313,7 +314,7 @@ export function MediaShareOptions(props) {
       <div className="copy-field">
         <div>
           <input type="text" readOnly value={shareMediaLink} />
-          <button onClick={onClickCopyMediaLink}>COPY</button>
+          <button onClick={onClickCopyMediaLink}>{i18next.t("COPY")}</button>
         </div>
       </div>
       <div className="start-at">
@@ -325,7 +326,7 @@ export function MediaShareOptions(props) {
               checked={startAtSelected} 
               onChange={updateStartAtCheckbox}
             />
-            Start at {formattedTimestamp}
+            {i18next.t("Start at", {time: formattedTimestamp})}
           </label>
         </div>
     </div>

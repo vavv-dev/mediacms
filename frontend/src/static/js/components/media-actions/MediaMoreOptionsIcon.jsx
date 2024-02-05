@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { formatInnerLink } from '../../utils/helpers/';
 import { usePopup, useUser } from '../../utils/hooks/';
@@ -173,22 +174,22 @@ function getPopupPages(userCan, mediaData, allowDownload, downloadLink, mediaRep
         <PopupMain>
           <ul className="media-status-info">
             <li>
-              Media type: <span>{mediaType}</span>
+              {i18next.t("Media type")}: <span>{mediaType}</span>
             </li>
             <li>
-              State: <span>{mediaState}</span>
+              {i18next.t("State")}: <span>{mediaState}</span>
             </li>
             <li>
-              Review state: <span>{mediaIsReviewed ? 'Is reviewed' : 'Pending review'}</span>
+              {i18next.t("Review state")}: <span>{mediaIsReviewed ? 'Is reviewed' : 'Pending review'}</span>
             </li>
             {mediaIsVideo ? (
               <li>
-                Encoding Status: <span>{mediaEncodingStatus}</span>
+                {i18next.t("Encoding Status")}: <span>{mediaEncodingStatus}</span>
               </li>
             ) : null}
             {mediaReportedTimes ? (
               <li className="reports">
-                Reports: <span>{mediaReportedTimes}</span>
+                {i18next.t("Reports")}: <span>{mediaReportedTimes}</span>
               </li>
             ) : null}
           </ul>

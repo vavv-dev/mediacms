@@ -11,6 +11,7 @@ import {
   extractDefaultVideoResolution,
 } from './functions';
 import { VideoPlayer, VideoPlayerError } from '../../video-player/VideoPlayer';
+import Transcribe from '../transcribe/Transcribe';
 
 import '../VideoViewer.scss';
 
@@ -37,6 +38,7 @@ export default class VideoViewer extends React.PureComponent {
 
     this.state = {
       displayPlayer: false,
+      playerInit: false,
     };
 
     this.videoSources = [];
@@ -419,6 +421,7 @@ export default class VideoViewer extends React.PureComponent {
     }
 
     this.playerInstance.player.one('ended', this.onVideoEnd);
+    this.setState({ playerInit: true });
   }
 
   onVideoRestart() {
@@ -516,7 +519,7 @@ export default class VideoViewer extends React.PureComponent {
         }
       : null;
 
-    return (
+    const playerContainer = (
       <div
         key={(this.props.inEmbed ? 'embed-' : '') + 'player-container'}
         className={'player-container' + (this.videoSources.length ? '' : ' player-container-error')}
@@ -563,6 +566,15 @@ export default class VideoViewer extends React.PureComponent {
           ) : null}
         </div>
       </div>
+    );
+
+    return (
+      <>
+        {playerContainer}
+        {this.state.displayPlayer && null == MediaPageStore.get('media-load-error-type') && this.state.playerInit && (
+          <Transcribe player={this.playerInstance.player} />
+        )}
+      </>
     );
   }
 }

@@ -1,4 +1,10 @@
+import json
+import math
+from numbers import Number
+
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from files.models import Media
 from users.models import User
@@ -45,8 +51,61 @@ class MediaAction(models.Model):
     def __str__(self):
         return self.action
 
+    @classmethod
+    def watch_data(cls, extra_info):
+        data = {"watched": [], "clipped": {}, "position": 0}
+        if extra_info:
+            try:
+                if isinstance(extra_info, str):
+                    data.update(json.loads(extra_info))
+                if isinstance(extra_info, dict):
+                    data.update(extra_info)
+            except json.JSONDecodeError:
+                pass
+        return data
+
     class Meta:
         indexes = [
             models.Index(fields=["user", "action", "-action_date"]),
             models.Index(fields=["session_key", "action"]),
         ]
+
+
+class WatchState(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    media = models.ForeignKey(Media, on_delete=models.CASCADE)
+    completion = models.FloatField(default=0)
+    clips = models.TextField(null=True, blank=True)
+
+    class Meta:
+        unique_together = (("user", "media"),)
+
+
+@receiver(post_save, sender=MediaAction)
+def update_watch(sender, instance, created, **kwargs):
+    if instance.action != "watch":
+        return
+
+    if not (instance.user and instance.extra_info):
+        return
+
+    data = MediaAction.watch_data(instance.extra_info)
+
+    # completion
+    completion = 0
+    if instance.media.duration:
+        # really watched seconds
+        watched = len([s for s in data.get("watched", []) if s])
+        completion = min(watched / math.floor(instance.media.duration), 100)
+
+    # clipped
+    clipped = ",".join(data.get("clipped", {}).keys())
+
+    WatchState.objects.update_or_create(
+        user=instance.user,
+        media=instance.media,
+        defaults={
+            "completion": completion,
+            "clips": clipped,
+        },
+    )

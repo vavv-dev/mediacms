@@ -7,6 +7,8 @@ import { PageStore, MediaPageStore } from '../../utils/stores/';
 import { PageActions, MediaPageActions } from '../../utils/actions/';
 import { LinksContext, MemberContext, SiteContext } from '../../utils/contexts/';
 import { PopupMain, UserThumbnail } from '../_shared';
+import i18next from 'i18next';
+import { selected as langSelected } from '../../utils/languages';
 
 import './videojs-markers.js';
 import './videojs.markers.css';
@@ -149,7 +151,7 @@ function CommentForm(props) {
                 inputRef={textareaRef}
                 className="form-textarea"
                 rows="1"
-                placeholder={'Add a ' + commentsText.single + '...'}
+                placeholder={i18next.t('Add a ' + commentsText.single + '...')}
                 value={value}
                 onChange={onChangeWithMention}
                 onFocus={onFocus}
@@ -164,7 +166,7 @@ function CommentForm(props) {
                 ref={textareaRef}
                 className="form-textarea"
                 rows="1"
-                placeholder={'Add a ' + commentsText.single + '...'}
+                placeholder={i18next.t('Add a ' + commentsText.single + '...')}
                 value={value}
                 onChange={onChange}
                 onFocus={onFocus}
@@ -174,7 +176,7 @@ function CommentForm(props) {
           </div>
           <div className="form-buttons">
             <button className={'' === value.trim() ? 'disabled' : ''} onClick={submitComment}>
-              {commentsText.submitCommentText}
+              {i18next.t(commentsText.submitCommentText)}
             </button>
           </div>
         </div>
@@ -189,13 +191,13 @@ function CommentForm(props) {
             href={loginUrl}
             rel="noffolow"
             className="form-textarea-wrap"
-            title={'Add a ' + commentsText.single + '...'}
+            title={i18next.t('Add a ' + commentsText.single + '...')}
           >
-            <span className="form-textarea">{'Add a ' + commentsText.single + '...'}</span>
+            <span className="form-textarea">{i18next.t('Add a ' + commentsText.single + '...')}</span>
           </a>
           <div className="form-buttons">
             <a href={loginUrl} rel="noffolow" className="disabled">
-              {commentsText.submitCommentText}
+              {i18next.t(commentsText.submitCommentText)}
             </a>
           </div>
         </div>
@@ -237,22 +239,22 @@ function CommentActions(props) {
       {MemberContext._currentValue.can.deleteComment ? (
         <div className="comment-action remove-comment">
           <PopupTrigger contentRef={popupContentRef}>
-            <button>DELETE {commentsText.uppercaseSingle}</button>
+            <button>{i18next.t('DELETE ' + commentsText.uppercaseSingle)}</button>
           </PopupTrigger>
 
           <PopupContent contentRef={popupContentRef}>
             <PopupMain>
               <div className="popup-message">
-                <span className="popup-message-title">{commentsText.ucfirstSingle} removal</span>
-                <span className="popup-message-main">You're willing to remove {commentsText.single} permanently?</span>
+                <span className="popup-message-title">{i18next.t(commentsText.ucfirstSingle + ' removal')}</span>
+                <span className="popup-message-main">{i18next.t(`You're willing to remove ${commentsText.single} permanently?`)}</span>
               </div>
               <hr />
               <span className="popup-message-bottom">
                 <button className="button-link cancel-comment-removal" onClick={cancelCommentRemoval}>
-                  CANCEL
+                  {i18next.t('CANCEL')}
                 </button>
                 <button className="button-link proceed-comment-removal" onClick={proceedCommentRemoval}>
-                  PROCEED
+                  {i18next.t('PROCEED')}
                 </button>
               </span>
             </PopupMain>
@@ -310,7 +312,7 @@ function Comment(props) {
                 {props.author_name}
               </a>
             </div>
-            <div className="comment-date">{format(new Date(props.publish_date))}</div>
+            <div className="comment-date">{format(new Date(props.publish_date), langSelected)}</div>
           </div>
           <div ref={commentTextRef} className={'comment-text' + (viewMoreContent ? ' show-all' : '')}>
             <div
@@ -321,7 +323,7 @@ function Comment(props) {
           </div>
           {enabledViewMoreContent ? (
             <button className="toggle-more" onClick={toggleMore}>
-              {viewMoreContent ? 'Show less' : 'Read more'}
+              {i18next.t(viewMoreContent ? 'Show less' : 'Read more')}
             </button>
           ) : null}
           {MemberContext._currentValue.can.deleteComment ? <CommentActions comment_id={props.comment_id} /> : null}
@@ -408,10 +410,10 @@ const CommentsListHeader = ({ commentsLength }) => {
         <h2>
           {commentsLength
             ? 1 < commentsLength
-              ? commentsLength + ' ' + commentsText.ucfirstPlural
-              : commentsLength + ' ' + commentsText.ucfirstSingle
+              ? commentsLength + ' ' + i18next.t(commentsText.ucfirstPlural)
+              : commentsLength + ' ' + i18next.t(commentsText.ucfirstSingle)
             : MediaPageStore.get('media-data').enable_comments
-            ? 'No ' + commentsText.single + ' yet'
+            ? i18next.t('No ' + commentsText.single + ' yet')
             : ''}
         </h2>
       ) : null}
@@ -497,13 +499,13 @@ export default function CommentsList(props) {
   function onCommentSubmit(commentId) {
     onCommentsLoad();
     // FIXME: Without delay creates conflict [ Uncaught Error: Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch. ].
-    setTimeout(() => PageActions.addNotification(commentsText.ucfirstSingle + ' added', 'commentSubmit'), 100);
+    setTimeout(() => PageActions.addNotification(i18next.t(commentsText.ucfirstSingle + ' added'), 'commentSubmit'), 100);
   }
 
   function onCommentSubmitFail() {
     // FIXME: Without delay creates conflict [ Uncaught Error: Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch. ].
     setTimeout(
-      () => PageActions.addNotification(commentsText.ucfirstSingle + ' submition failed', 'commentSubmitFail'),
+      () => PageActions.addNotification(i18next.t(commentsText.ucfirstSingle + ' submition failed'), 'commentSubmitFail'),
       100
     );
   }
@@ -511,13 +513,13 @@ export default function CommentsList(props) {
   function onCommentDelete(commentId) {
     onCommentsLoad();
     // FIXME: Without delay creates conflict [ Uncaught Error: Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch. ].
-    setTimeout(() => PageActions.addNotification(commentsText.ucfirstSingle + ' removed', 'commentDelete'), 100);
+    setTimeout(() => PageActions.addNotification(i18next.t(commentsText.ucfirstSingle + ' removed'), 'commentDelete'), 100);
   }
 
   function onCommentDeleteFail(commentId) {
     // FIXME: Without delay creates conflict [ Uncaught Error: Dispatch.dispatch(...): Cannot dispatch in the middle of a dispatch. ].
     setTimeout(
-      () => PageActions.addNotification(commentsText.ucfirstSingle + ' removal failed', 'commentDeleteFail'),
+      () => PageActions.addNotification(i18next.t(commentsText.ucfirstSingle + ' removal failed'), 'commentDeleteFail'),
       100
     );
   }

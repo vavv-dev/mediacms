@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { MaterialIcon } from '../material-icon/MaterialIcon.jsx';
 
@@ -17,7 +18,7 @@ export function FiltersToggleButton(props) {
       <button className={isActive ? 'active' : ''} aria-label="Filter" onClick={onClick}>
         <MaterialIcon type="filter_list" />
         <span className="filter-button-label">
-          <span className="filter-button-label-text">FILTERS</span>
+          <span className="filter-button-label-text">{i18next.t('FILTERS')}</span>
         </span>
       </button>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import i18next from 'i18next';
 import { ApiUrlConsumer } from '../utils/contexts/';
 import { PageStore } from '../utils/stores/';
 import { useUser } from '../utils/hooks/';
@@ -30,7 +31,7 @@ export const AnonymousLikedMediaPage: React.FC<AnonymousLikedMediaPageProps> = (
       <ApiUrlConsumer>
         {(apiUrl) => (
           <MediaListWrapper
-            title={title + (null !== resultsCount ? ' (' + resultsCount + ')' : '')}
+            title={i18next.t(title) + (null !== resultsCount ? ' (' + resultsCount + ')' : '')}
             className="search-results-wrap items-list-hor"
           >
             <LazyLoadItemListAsync

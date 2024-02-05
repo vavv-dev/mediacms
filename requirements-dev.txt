@@ -13,4 +13,5 @@ pytest-django
 pytest-factoryboy
 Faker
 django-cors-headers
-
+isort
+django-stubs

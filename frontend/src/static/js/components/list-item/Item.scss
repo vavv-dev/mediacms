@@ -153,6 +153,35 @@ a.item-thumb {
   }
 }
 
+.item-completion {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  > .material-icons {
+    display: inline-block;
+    margin: 4px;
+    font-weight: bold;
+  }
+  > .completion-bar {
+    height: 3px;
+    display: inline-block;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.item-clips {
+  display: flex;
+  align-items: center;
+  clear: left;
+  float: left;
+  .clip-link {
+    margin-left: 0.5rem;
+  }
+}
+
 .item-duration {
   font-size: 12px;
   font-weight: 500;

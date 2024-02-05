@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from actions.models import MediaAction
+
 from .models import Category, Comment, EncodeProfile, Media, Playlist, Tag
 
 # TODO: put them in a more DRY way
@@ -13,6 +15,10 @@ class MediaSerializer(serializers.ModelSerializer):
     thumbnail_url = serializers.SerializerMethodField()
     author_profile = serializers.SerializerMethodField()
     author_thumbnail = serializers.SerializerMethodField()
+
+    # annotate fields
+    completion = serializers.SerializerMethodField()
+    clips = serializers.SerializerMethodField()
 
     def get_url(self, obj):
         return self.context["request"].build_absolute_uri(obj.get_absolute_url())
@@ -31,6 +37,14 @@ class MediaSerializer(serializers.ModelSerializer):
 
     def get_author_thumbnail(self, obj):
         return self.context["request"].build_absolute_uri(obj.author_thumbnail())
+
+    def get_completion(self, obj):
+        if hasattr(obj, "completion"):
+            return obj.completion
+
+    def get_clips(self, obj):
+        if hasattr(obj, "clips"):
+            return obj.clips
 
     class Meta:
         model = Media
@@ -76,15 +90,22 @@ class MediaSerializer(serializers.ModelSerializer):
             "featured",
             "user_featured",
             "size",
+            "completion",
+            "clips",
         )
 
 
 class SingleMediaSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source="user.username")
     url = serializers.SerializerMethodField()
+    watch = serializers.SerializerMethodField()
 
     def get_url(self, obj):
         return self.context["request"].build_absolute_uri(obj.get_absolute_url())
+
+    def get_watch(self, obj):
+        action = obj.mediaactions.filter(action="watch").order_by("id").last()
+        return MediaAction.watch_data(action.extra_info if action else None)
 
     class Meta:
         model = Media
@@ -124,6 +145,7 @@ class SingleMediaSerializer(serializers.ModelSerializer):
             "author_name",
             "author_profile",
             "author_thumbnail",
+            "watch",
             "encodings_info",
             "encoding_status",
             "views",
@@ -152,6 +174,18 @@ class MediaSearchSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField()
     api_url = serializers.SerializerMethodField()
 
+    # annotate fields
+    completion = serializers.SerializerMethodField()
+    clips = serializers.SerializerMethodField()
+
+    def get_completion(self, obj):
+        if hasattr(obj, "completion"):
+            return obj.completion
+
+    def get_clips(self, obj):
+        if hasattr(obj, "clips"):
+            return obj.clips
+
     def get_url(self, obj):
         return self.context["request"].build_absolute_uri(obj.get_absolute_url())
 
@@ -175,6 +209,8 @@ class MediaSearchSerializer(serializers.ModelSerializer):
             "media_type",
             "preview_url",
             "categories_info",
+            "completion",
+            "clips",
         )
 
 

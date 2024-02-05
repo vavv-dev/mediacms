@@ -4,7 +4,15 @@ import { useMediaItem } from '../../utils/hooks/';
 import { PositiveIntegerOrZero } from '../../utils/helpers/';
 import { MediaDurationInfo } from '../../utils/classes/';
 import { MediaPlaylistOptions } from '../media-playlist-options/MediaPlaylistOptions.jsx';
-import { MediaItemVideoPlayer, MediaItemDuration, MediaItemVideoPreviewer, MediaItemPlaylistIndex, itemClassname } from './includes/items/';
+import {
+  MediaItemVideoPlayer,
+  MediaItemDuration,
+  MediaItemVideoPreviewer,
+  MediaItemPlaylistIndex,
+  MediaItemCompletion,
+  MediaItemClips,
+  itemClassname,
+} from './includes/items/';
 import { MediaItem } from './MediaItem';
 
 export function MediaItemVideo(props) {
@@ -38,6 +46,9 @@ export function MediaItemVideo(props) {
 
     return (
       <a {...attr}>
+        {props.inPlaylistView ? null : (
+          <MediaItemCompletion completion={props.completion} />
+        )}
         {props.inPlaylistView ? null : (
           <MediaItemDuration ariaLabel={duration} time={durationISO8601} text={durationStr} />
         )}
@@ -85,6 +96,7 @@ export function MediaItemVideo(props) {
           {titleComponent()}
           {metaComponents()}
           {descriptionComponent()}
+          <MediaItemClips link={props.link} clips={props.clips} />
         </UnderThumbWrapper>
       </div>
 
@@ -101,6 +113,8 @@ MediaItemVideo.propTypes = {
   hasMediaViewer: PropTypes.bool,
   hasMediaViewerDescr: PropTypes.bool,
   playlist_id: PropTypes.string,
+  completion: PropTypes.number,
+  clips: PropTypes.string,
 };
 
 MediaItemVideo.defaultProps = {

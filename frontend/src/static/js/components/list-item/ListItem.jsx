@@ -219,6 +219,11 @@ export function listItemProps(props, item, index) {
     args.duration = item.duration;
   }
 
+  if (isMediaItem) {
+    args.completion = item.completion;
+    args.clips = item.clips;
+  }
+
   if ((isArchiveItem || isPlaylistItem) && !isNaN(item.media_count)) {
     args.media_count = parseInt(item.media_count, 10);
   }
@@ -293,6 +298,9 @@ export function ListItem(props) {
     args.hideDate = props.hide.date;
     args.hideViews = props.hide.views;
     args.hideAuthor = props.hide.author;
+
+    args.completion = props.completion;
+    args.clips = props.clips;
   }
 
   if (props.playlistPage.current || props.playlistPlayback.current) {

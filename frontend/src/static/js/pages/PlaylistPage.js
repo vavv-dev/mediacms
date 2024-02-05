@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import i18next from 'i18next';
 import { PageActions, PlaylistPageActions } from '../utils/actions/';
 import { MemberContext } from '../utils/contexts/';
 import { usePopup } from '../utils/hooks/';
@@ -84,7 +85,7 @@ function PlaylistThumb(props) {
             <span>
               <span>
                 <i className="material-icons">play_arrow</i>
-                <span className="play-all-label">PLAY ALL</span>
+                <span className="play-all-label">{i18next.t('PLAY ALL')}</span>
               </span>
             </span>
           </span>
@@ -105,9 +106,9 @@ function PlaylistTitle(props) {
 function PlaylistMeta(props) {
   return (
     <div className="playlist-meta">
-      <div className="playlist-videos-number">{props.totalItems} media</div>
+      <div className="playlist-videos-number">{i18next.t('media', { count: props.totalItems })}</div>
       {/*<div className="playlist-views">{ props.viewsCount } { 1 < formatViewsNumber( props.viewsCount ) ? 'views' : 'view' }</div>*/}
-      {!props.dateLabel ? null : <div className="playlist-last-update">{props.dateLabel}</div>}
+      {!props.dateLabel ? null : <div className="playlist-last-update">{new Date(props.dateLabel).toLocaleString()}</div>}
     </div>
   );
 }
@@ -255,7 +256,7 @@ function PlaylistEdit(props) {
       <PopupTrigger contentRef={popupContentRef}>
         <CircleIconButton>
           <MaterialIcon type="edit" />
-          <span>EDIT</span>
+          <span>{i18next.t('EDIT')}</span>
         </CircleIconButton>
       </PopupTrigger>
 
@@ -265,7 +266,7 @@ function PlaylistEdit(props) {
             <span className="popup-fullscreen-overlay"></span>
             <div className="edit-playlist-form-wrap">
               <div className="edit-playlist-popup-title">
-                Edit playlist
+                {i18next.t('Edit playlist')}
                 <CircleIconButton type="button" onClick={onClickExit}>
                   <MaterialIcon type="close" />
                 </CircleIconButton>
