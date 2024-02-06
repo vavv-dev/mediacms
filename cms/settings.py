@@ -134,7 +134,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.TokenAuthentication",
-        "auth.authentication.CookieJWTAuthentication",
+        "jwt_auth.authentication.CookieJWTAuthentication",
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 50,
@@ -294,7 +294,6 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "rest_framework",
     "rest_framework.authtoken",
-    "rest_framework_simplejwt",
     "imagekit",
     "files.apps.FilesConfig",
     "users.apps.UsersConfig",
@@ -306,6 +305,7 @@ INSTALLED_APPS = [
     "djcelery_email",
     "ckeditor",
     "drf_yasg",
+    "jwt_auth.apps.AuthConfig",
 ]
 
 MIDDLEWARE = [
@@ -318,6 +318,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "jwt_auth.middleware.JwtCookeMiddlewate",
 ]
 
 ROOT_URLCONF = "cms.urls"
@@ -469,8 +470,9 @@ LANGUAGE_CODE = 'en'
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "AUTH_TOKEN_CLASSES": ("jwt_auth.tokens.AutoRefreshToken",),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=14),
     "AUTH_COOKIE_SECURE": False,
     "AUTH_COOKIE_HTTP_ONLY": True,
     "AUTH_COOKIE_SAMESITE": None,
@@ -479,6 +481,7 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": True,
     "SIGNING_KEY": SECRET_KEY,
     "ALGORITHM": "HS512",
+    "LEEWAY": 1 * 60 * 60 * 24 * 365,  # 1 year leeway
     # jwt cookie
     "AUTH_COOKIE_NAME": "jwt-access-token",
     "AUTH_COOKIE_REFRESH_NAME": "jwt-refresh-token",

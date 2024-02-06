@@ -16,7 +16,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_simplejwt',
     'imagekit',
     'files.apps.FilesConfig',
     'users.apps.UsersConfig',
@@ -29,6 +28,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'drf_yasg',
     'corsheaders',
+    "jwt_auth.apps.JWTAuthConfig",
 ]
 
 MIDDLEWARE = [
@@ -41,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    "jwt_auth.middleware.JwtCookeMiddlewate",
 ]
 
 DEBUG = True

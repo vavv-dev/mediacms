@@ -29,5 +29,5 @@ urlpatterns = [
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('docs/api/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     # auth
-    path("", include("auth.urls")),
+    path("", include("jwt_auth.urls")),
 ]
