@@ -1,5 +1,10 @@
 from django.conf import settings
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.views import Response
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenViewBase,
+)
 
 
 def set_jwt_cookie(response, access_token=None, refresh_token=None):
@@ -41,9 +46,29 @@ class CookieTokenObtainPairView(TokenObtainPairView):
 
     def finalize_response(self, request, response, *args, **kwargs):
         set_jwt_cookie(response, response.data['access'], response.data['refresh'])
+        del response.data['refresh']
         return super().finalize_response(request, response, *args, **kwargs)
 
 
-"""
-refresh view is not required. JWTCookieMiddleware will take care of refreshing token from cookie
-"""
+class CookieTokenRefreshView(TokenRefreshView):
+    """
+    This refresh view is not required.
+    JWTCookieMiddleware will take care of refreshing token from cookie.
+    """
+
+
+class CookieTokenDestroyView(TokenViewBase):
+    """
+    Custom TokenDestroyView to delete cookies and blacklist tokens
+    """
+
+    def post(self, request, *args, **kwargs):
+        # TODO security measure is necessary?
+
+        response = Response({}, status=204)
+        response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_NAME'])
+        response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH_NAME'])
+
+        # TODO blacklist tokens
+
+        return response
